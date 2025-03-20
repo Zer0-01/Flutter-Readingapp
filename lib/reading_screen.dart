@@ -36,8 +36,10 @@ void showHelpDialog(BuildContext context) {
 }
 
 class ReadingScreen extends StatefulWidget {
+  const ReadingScreen({super.key});
+
   @override
-  _ReadingScreenState createState() => _ReadingScreenState();
+  State<ReadingScreen> createState() => _ReadingScreenState();
 }
 
 class _ReadingScreenState extends State<ReadingScreen> {
@@ -105,7 +107,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
               icon: Icon(Icons.help_outline))
         ], // Add elevation for a shadow effect
       ),
-      body: Container(
+      body: SizedBox(
         height: double.infinity,
         child: Stack(children: [
           Positioned.fill(

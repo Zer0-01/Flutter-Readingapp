@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:readingapps/readingScreen.dart';
+import 'package:readingapps/reading_screen.dart';
 
 void main() {
   runApp(const MyApp());
