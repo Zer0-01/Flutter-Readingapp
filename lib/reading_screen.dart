@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
@@ -6,8 +7,8 @@ void showHelpDialog(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text("Cara Menggunakan Aplikasi"),
-        content: Column(
+        title: const Text("Cara Menggunakan Aplikasi"),
+        content: const Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -27,7 +28,7 @@ void showHelpDialog(BuildContext context) {
             onPressed: () {
               Navigator.of(context).pop(); // Close the dialog
             },
-            child: Text("Tutup"),
+            child: const Text("Tutup"),
           ),
         ],
       );
@@ -35,6 +36,7 @@ void showHelpDialog(BuildContext context) {
   );
 }
 
+@RoutePage()
 class ReadingScreen extends StatefulWidget {
   const ReadingScreen({super.key});
 
@@ -88,7 +90,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "ISeBa: Mari membaca !",
           style: TextStyle(
             fontSize: 24, // Adjust the font size
@@ -96,7 +98,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
             color: Colors.white, // Change text color
           ),
         ),
-        backgroundColor: Color(0xFFD5A4A4),
+        backgroundColor: const Color(0xFFD5A4A4),
         // Use a pastel color (replace with your desired color)
         elevation: 4,
         actions: [
@@ -104,7 +106,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
               onPressed: () {
                 showHelpDialog(context);
               },
-              icon: Icon(Icons.help_outline))
+              icon: const Icon(Icons.help_outline))
         ], // Add elevation for a shadow effect
       ),
       body: SizedBox(
@@ -130,12 +132,12 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       borderRadius: BorderRadius.circular(
                           10.0), // Adjust the radius as needed
                     ),
-                    padding: EdgeInsets.all(10.0),
-                    margin: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10.0),
+                    margin: const EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        SizedBox(height: 20),
-                        Text(
+                        const SizedBox(height: 20),
+                        const Text(
                           'Perkataan Terhasil:',
                           style: TextStyle(
                             fontSize: 20,
@@ -144,26 +146,26 @@ class _ReadingScreenState extends State<ReadingScreen> {
                         ),
                         Text(
                           formedWord,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Wrap(
                           spacing: 0,
                           children: <Widget>[
                             for (var syllable in syllables)
                               Padding(
-                                padding: EdgeInsets.all(0.0),
+                                padding: const EdgeInsets.all(0.0),
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 6),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(0),
-                                      side: BorderSide(
+                                      side: const BorderSide(
                                         color: Colors.blue,
                                         width: 6.0,
                                       ),
@@ -174,7 +176,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                                   },
                                   child: Text(
                                     syllable,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.black,
                                     ),
                                   ),
@@ -190,12 +192,12 @@ class _ReadingScreenState extends State<ReadingScreen> {
                         vertical: 0, horizontal: 80.0),
                     child: TextField(
                       controller: _syllableController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Masukkan suku kata',
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   ElevatedButton.icon(
                     onPressed: () async {
                       String syllable = _syllableController.text.trim();
@@ -208,11 +210,11 @@ class _ReadingScreenState extends State<ReadingScreen> {
                         });
                       }
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_forward,
                       color: Colors.white,
                     ),
-                    label: Text(
+                    label: const Text(
                       'Seterusnya',
                       style: TextStyle(
                         color: Colors.white,
@@ -222,18 +224,18 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       backgroundColor: Colors.orange,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   ElevatedButton.icon(
                     onPressed: () async {
                       if (formedWord.isNotEmpty) {
                         await playWordAudio(formedWord);
                       }
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.speaker,
                       color: Colors.white,
                     ),
-                    label: Text(
+                    label: const Text(
                       'Mainkan sebutan perkataan',
                       style: TextStyle(
                         color: Colors.white,
@@ -243,16 +245,16 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       backgroundColor: Colors.orange,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   ElevatedButton.icon(
                     onPressed: () {
                       resetFormedWord();
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.delete,
                       color: Colors.white,
                     ),
-                    label: Text(
+                    label: const Text(
                       'Padam',
                       style: TextStyle(
                         color: Colors.white,

@@ -40,11 +40,15 @@ dependencies:
   auto_hyphenating_text: ^0.1.1
   google_fonts: ^6.1.0
   flutter_launcher_icons: ^0.14.3
+  adaptive_theme: ^3.7.0
+  auto_route: ^10.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  build_runner: ^2.4.15
+  auto_route_generator: ^10.0.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
