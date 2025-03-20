@@ -192,8 +192,22 @@ class _ReadingScreenState extends State<ReadingScreen> {
                         vertical: 0, horizontal: 80.0),
                     child: TextField(
                       controller: _syllableController,
-                      decoration: const InputDecoration(
-                        labelText: 'Masukkan suku kata',
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.surface,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Theme.of(context).colorScheme.shadow),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10.0)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Theme.of(context).colorScheme.shadow),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10.0)),
+                        ),
+                        hintText: 'Masukkan suku kata',
                       ),
                     ),
                   ),
@@ -221,7 +235,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -242,7 +256,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -261,7 +275,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ],
