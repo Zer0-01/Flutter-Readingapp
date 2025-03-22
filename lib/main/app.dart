@@ -1,5 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:readingapps/configuration/app_router.dart';
 
 class App extends StatelessWidget {
@@ -25,13 +26,14 @@ class App extends StatelessWidget {
         useMaterial3: true,
         brightness: Brightness.light,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        
+        fontFamily: GoogleFonts.andika().fontFamily,
       );
 
   ThemeData _buildDarkTheme() => ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, brightness: Brightness.dark),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepPurple, brightness: Brightness.dark),
       );
 
   MaterialApp _buildMaterialApp(ThemeData light, ThemeData dark) {
