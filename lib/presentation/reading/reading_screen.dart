@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:readingapps/constants.dart';
 import 'package:readingapps/presentation/reading/widgets/reading_appbar_widget.dart';
 
@@ -70,6 +71,78 @@ class _ReadingScreenState extends State<ReadingScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                Container(
+                  padding: const EdgeInsets.all(8.0),
+                  alignment: Alignment.topCenter,
+                  decoration: const BoxDecoration(
+                    color: Colors.green,
+                    border: Border(
+                      bottom: BorderSide(color: Colors.brown, width: 4),
+                    ),
+                  ),
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            DateFormat("EEEE").format(DateTime.now()),
+                            style: context.textTheme.bodySmall?.copyWith(
+                                color: context.theme.colorScheme.onPrimary),
+                          ),
+                          Text(
+                            DateFormat("dd/MM/yyyy").format(DateTime.now()),
+                            style: context.textTheme.bodySmall?.copyWith(
+                                color: context.theme.colorScheme.onPrimary),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: context.theme.colorScheme.primaryContainer,
+                              border: Border.all(
+                                color: context
+                                    .theme.colorScheme.onPrimaryContainer,
+                                width: 2,
+                              ),
+                            ),
+                            child: const Text("ber"),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: context.theme.colorScheme.primaryContainer,
+                              border: Border.all(
+                                color: context
+                                    .theme.colorScheme.onPrimaryContainer,
+                                width: 2,
+                              ),
+                            ),
+                            child: const Text("ber"),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: context.theme.colorScheme.primaryContainer,
+                              border: Border.all(
+                                color: context
+                                    .theme.colorScheme.onPrimaryContainer,
+                                width: 2,
+                              ),
+                            ),
+                            child: const Text("ber"),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
                 TextField(
                   decoration: InputDecoration(
                     filled: true,
