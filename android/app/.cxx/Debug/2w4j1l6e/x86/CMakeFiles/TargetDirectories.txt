@@ -1,2 +1,0 @@
-C:/Users/anasz/Zero/Development/Mobile/Flutter/Flutter-Readingapp/android/app/.cxx/Debug/2w4j1l6e/x86/CMakeFiles/edit_cache.dir
-C:/Users/anasz/Zero/Development/Mobile/Flutter/Flutter-Readingapp/android/app/.cxx/Debug/2w4j1l6e/x86/CMakeFiles/rebuild_cache.dir
