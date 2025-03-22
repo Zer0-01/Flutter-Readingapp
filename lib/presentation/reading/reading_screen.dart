@@ -86,7 +86,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     alignment: Alignment.topCenter,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: Colors.green,
+                      color: Colors.green.shade700,
                       border: Border(
                         top: BorderSide(color: Colors.brown, width: 4),
                         left: BorderSide(color: Colors.brown, width: 4),
@@ -104,12 +104,18 @@ class _ReadingScreenState extends State<ReadingScreen> {
                             Text(
                               DateFormat("EEEE").format(DateTime.now()),
                               style: context.textTheme.bodySmall?.copyWith(
-                                  color: context.theme.colorScheme.onPrimary),
+                                  color: context.theme.colorScheme.onPrimary,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor:
+                                      context.theme.colorScheme.onPrimary),
                             ),
                             Text(
                               DateFormat("dd/MM/yyyy").format(DateTime.now()),
                               style: context.textTheme.bodySmall?.copyWith(
-                                  color: context.theme.colorScheme.onPrimary),
+                                  color: context.theme.colorScheme.onPrimary,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor:
+                                      context.theme.colorScheme.onPrimary),
                             ),
                           ],
                         ),
@@ -119,13 +125,16 @@ class _ReadingScreenState extends State<ReadingScreen> {
                               ? state.syllables
                                   .map(
                                     (syllable) => Container(
-                                      padding: const EdgeInsets.all(8.0),
+                                      margin:
+                                          EdgeInsets.symmetric(horizontal: 2),
+                                      padding: const EdgeInsets.all(4.0),
                                       decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
                                         color: context
                                             .theme.colorScheme.primaryContainer,
                                         border: Border.all(
-                                          color: context.theme.colorScheme
-                                              .onPrimaryContainer,
+                                          color: context
+                                              .theme.colorScheme.surfaceDim,
                                           width: 2,
                                         ),
                                       ),
@@ -147,9 +156,14 @@ class _ReadingScreenState extends State<ReadingScreen> {
                         Align(
                           alignment: Alignment.centerRight,
                           child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.black,
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 2,
+                                )),
                             width: 24,
                             height: 12,
-                            color: Colors.black,
                           ),
                         )
                       ],
@@ -182,6 +196,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     onPressed: () {
                       context.read<ReadingBloc>().add(OnPressedSeterusnyaEvent(
                           syllable: _newSyllableController.text));
+                      _newSyllableController.clear();
                     },
                     label: const Text("Seterusnya"),
                     icon: const Icon(Icons.chevron_right),
