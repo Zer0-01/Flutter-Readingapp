@@ -11,7 +11,7 @@ class ReadingAppbarWidget extends StatelessWidget
       title: Text("ISeBa: Mari membaca !",
           style: Theme.of(context).textTheme.titleLarge),
       foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
-      backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       actions: [
         IconButton(
             onPressed: () => showDialog(
