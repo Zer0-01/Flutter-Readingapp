@@ -87,7 +87,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       color: Colors.green.shade700,
-                      border: Border(
+                      border: const Border(
                         top: BorderSide(color: Colors.brown, width: 4),
                         left: BorderSide(color: Colors.brown, width: 4),
                         right: BorderSide(color: Colors.brown, width: 4),
@@ -125,8 +125,8 @@ class _ReadingScreenState extends State<ReadingScreen> {
                               ? state.syllables
                                   .map(
                                     (syllable) => Container(
-                                      margin:
-                                          EdgeInsets.symmetric(horizontal: 2),
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 2),
                                       padding: const EdgeInsets.all(4.0),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(8),
@@ -203,7 +203,11 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     iconAlignment: IconAlignment.end,
                   ),
                   FilledButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      context
+                          .read<ReadingBloc>()
+                          .add(const OnPressedMainkanPerkataanEvent());
+                    },
                     label: const Text("Mainkan sebutan perkataan"),
                     icon: const Icon(Icons.speaker),
                     iconAlignment: IconAlignment.end,
@@ -213,7 +217,11 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       backgroundColor: context.theme.colorScheme.error,
                       foregroundColor: context.theme.colorScheme.onError,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      context
+                          .read<ReadingBloc>()
+                          .add(const OnPressedPadamEvent());
+                    },
                     label: const Text("Padam"),
                     icon: const Icon(Icons.delete),
                     iconAlignment: IconAlignment.end,

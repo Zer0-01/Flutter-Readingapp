@@ -14,3 +14,17 @@ class OnPressedSeterusnyaEvent extends ReadingEvent {
   @override
   List<Object?> get props => [syllable];
 }
+
+class OnPressedPadamEvent extends ReadingEvent {
+  const OnPressedPadamEvent();
+
+  @override
+  List<Object?> get props => [];
+}
+
+class OnPressedMainkanPerkataanEvent extends ReadingEvent {
+  const OnPressedMainkanPerkataanEvent();
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
