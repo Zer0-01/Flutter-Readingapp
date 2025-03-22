@@ -44,8 +44,11 @@ dependencies:
   auto_route: ^10.0.1
   flutter_bloc: ^9.1.0
   equatable: ^2.0.7
-  intl: ^0.20.2
+  intl: any
   flutter_native_splash: ^2.4.5
+  flutter_localizations:
+    sdk: flutter
+  get_it: ^8.0.3
 
 dev_dependencies:
   flutter_test:
