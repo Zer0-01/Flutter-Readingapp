@@ -1,9 +1,21 @@
 part of 'reading_bloc.dart';
 
 class ReadingState extends Equatable {
-  const ReadingState();
-  @override
-  List<Object?> get props => [];
-}
+  final List<String> syllables;
+  final String word;
 
-class ReadingInitial extends ReadingState {}
+  const ReadingState({this.syllables = const [], this.word = ''});
+
+  ReadingState copyWith({
+    List<String>? syllables,
+    String? word,
+  }) {
+    return ReadingState(
+      syllables: syllables ?? this.syllables,
+      word: word ?? this.word,
+    );
+  }
+
+  @override
+  List<Object?> get props => [syllables, word];
+}

@@ -14,6 +14,8 @@ class ReadingScreen extends StatefulWidget {
 
 class _ReadingScreenState extends State<ReadingScreen> {
   final TextEditingController _syllableController = TextEditingController();
+  late final TextEditingController _newSyllableController;
+
   String formedWord = '';
   FlutterTts flutterTts = FlutterTts();
   List<String> syllables = []; // Store the entered syllables
@@ -29,6 +31,8 @@ class _ReadingScreenState extends State<ReadingScreen> {
   void initState() {
     super.initState();
     initTts();
+
+    _newSyllableController = TextEditingController();
   }
 
   Future<void> playSyllableAudio(String syllable) async {
@@ -51,6 +55,8 @@ class _ReadingScreenState extends State<ReadingScreen> {
   void dispose() {
     _syllableController.dispose();
     flutterTts.stop();
+    _newSyllableController.dispose();
+
     super.dispose();
   }
 
@@ -144,6 +150,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                   ),
                 ),
                 TextField(
+                  controller: _newSyllableController,
                   decoration: InputDecoration(
                     filled: true,
                     isDense: true,

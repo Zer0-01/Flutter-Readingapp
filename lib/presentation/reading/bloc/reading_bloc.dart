@@ -5,7 +5,12 @@ part 'reading_event.dart';
 part 'reading_state.dart';
 
 class ReadingBloc extends Bloc<ReadingEvent, ReadingState> {
-  ReadingBloc() : super(ReadingInitial()) {
-    on<ReadingEvent>((event, emit) {});
+  ReadingBloc() : super(const ReadingState()) {
+    on<OnPressedSeterusnyaEvent>(_onPressedSeterusnaEvent);
   }
+
+  void _onPressedSeterusnaEvent(
+    OnPressedSeterusnyaEvent event,
+    Emitter<ReadingState> emit,
+  ) {}
 }
