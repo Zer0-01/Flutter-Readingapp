@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:readingapps/presentation/reading/bloc/reading_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ReadingFooterWidget extends StatelessWidget {
   final TextEditingController syllableController;
@@ -25,7 +26,7 @@ class ReadingFooterWidget extends StatelessWidget {
                     syllableController.clear();
                   }
                 : null,
-            label: const Text("Seterusnya"),
+            label: Text(AppLocalizations.of(context)!.general_next),
             icon: const Icon(Icons.chevron_right),
             iconAlignment: IconAlignment.end,
           ),

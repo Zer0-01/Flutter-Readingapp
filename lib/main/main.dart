@@ -9,10 +9,10 @@ import 'package:readingapps/main/app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   AppLocalStorage().setStorage(StorageType.sharedPreferences);
-  final defaultLanguage =
+  final String defaultLanguage =
       await AppLocalStorage().read(StorageKeys.language.name) ??
-          CountryEnum.malaysia.languageCode;
-  final defaultTTSLanguage =
+          CountryEnum.english_uk.languageCode;
+  final String defaultTTSLanguage =
       await AppLocalStorage().read(StorageKeys.textToSpeech.name) ??
           CountryEnum.malaysia.textToSpeech;
 
@@ -21,5 +21,7 @@ void main() async {
   await flutterTTS.setLanguage(defaultTTSLanguage);
   FlutterNativeSplash.remove();
 
-  runApp(App());
+  runApp(App(
+    defaultLanguage: defaultLanguage,
+  ));
 }
