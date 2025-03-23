@@ -27,3 +27,11 @@ class OnPressedMainkanPerkataanEvent extends ReadingEvent {
   @override
   List<Object?> get props => [];
 }
+
+class OnPressedSyllableEvent extends ReadingEvent {
+  final String syllable;
+  const OnPressedSyllableEvent({required this.syllable});
+
+  @override
+  List<Object?> get props => [syllable];
+}

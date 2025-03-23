@@ -11,6 +11,7 @@ class ReadingBloc extends Bloc<ReadingEvent, ReadingState> {
     on<OnPressedSeterusnyaEvent>(_onPressedSeterusnaEvent);
     on<OnPressedPadamEvent>(_onPressedPadamEvent);
     on<OnPressedMainkanPerkataanEvent>(_onPressedMainkanPerkataanEvent);
+    on<OnPressedSyllableEvent>(_onPressedSyllableEvent);
   }
 
   void _onPressedSeterusnaEvent(
@@ -34,5 +35,12 @@ class ReadingBloc extends Bloc<ReadingEvent, ReadingState> {
     Emitter<ReadingState> emit,
   ) {
     getIt<FlutterTts>().speak(state.syllables.join(''));
+  }
+
+  void _onPressedSyllableEvent(
+    OnPressedSyllableEvent event,
+    Emitter<ReadingState> emit,
+  ) {
+    getIt<FlutterTts>().speak(event.syllable);
   }
 }

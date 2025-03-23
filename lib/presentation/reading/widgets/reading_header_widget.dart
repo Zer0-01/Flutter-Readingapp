@@ -26,6 +26,7 @@ class ReadingHeaderWidget extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.8,
         height: MediaQuery.of(context).size.height * 0.2,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,23 +47,27 @@ class ReadingHeaderWidget extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 12),
             Row(
               children: state.syllables.isNotEmpty
                   ? state.syllables
                       .map(
-                        (syllable) => Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 2),
-                          padding: const EdgeInsets.all(4.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: context.theme.colorScheme.primaryContainer,
-                            border: Border.all(
-                              color: context.theme.colorScheme.surfaceDim,
-                              width: 2,
+                        (syllable) => GestureDetector(
+                          onTap: () => context
+                              .read<ReadingBloc>()
+                              .add(OnPressedSyllableEvent(syllable: syllable)),
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 2),
+                            padding: const EdgeInsets.all(4.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: context.theme.colorScheme.primaryContainer,
+                              border: Border.all(
+                                color: context.theme.colorScheme.surfaceDim,
+                                width: 2,
+                              ),
                             ),
+                            child: Text(syllable),
                           ),
-                          child: Text(syllable),
                         ),
                       )
                       .toList()
@@ -74,7 +79,6 @@ class ReadingHeaderWidget extends StatelessWidget {
                       ),
                     ],
             ),
-            const Spacer(),
             Align(
               alignment: Alignment.centerRight,
               child: Container(
