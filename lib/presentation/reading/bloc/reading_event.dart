@@ -25,6 +25,5 @@ class OnPressedPadamEvent extends ReadingEvent {
 class OnPressedMainkanPerkataanEvent extends ReadingEvent {
   const OnPressedMainkanPerkataanEvent();
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
