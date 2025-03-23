@@ -1,8 +1,10 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readingapps/configuration/app_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:readingapps/presentation/global_blocs/language_bloc/language_bloc.dart';
 
 class App extends StatelessWidget {
   final String defaultLanguage;
@@ -39,16 +41,24 @@ class App extends StatelessWidget {
             seedColor: Colors.deepPurple, brightness: Brightness.dark),
       );
 
-  MaterialApp _buildMaterialApp(
+  MultiBlocProvider _buildMaterialApp(
       ThemeData light, ThemeData dark, String defaultLanguage) {
-    return MaterialApp.router(
-      theme: light,
-      darkTheme: dark,
-      routerConfig: _appRouter.config(),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      locale: Locale(defaultLanguage),
-      debugShowCheckedModeBanner: false,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+            create: (context) => LanguageBloc(language: defaultLanguage))
+      ],
+      child: BlocBuilder<LanguageBloc, LanguageState>(
+        builder: (context, state) => MaterialApp.router(
+          theme: light,
+          darkTheme: dark,
+          routerConfig: _appRouter.config(),
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: Locale(state.language),
+          debugShowCheckedModeBanner: false,
+        ),
+      ),
     );
   }
 }

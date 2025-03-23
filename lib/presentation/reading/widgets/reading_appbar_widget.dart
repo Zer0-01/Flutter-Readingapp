@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:readingapps/constants.dart';
 import 'package:readingapps/extensions.dart';
+import 'package:readingapps/presentation/global_blocs/language_bloc/language_bloc.dart';
 import 'package:readingapps/presentation/reading/bloc/reading_bloc.dart';
 import 'package:readingapps/presentation/reading/widgets/reading_bottom_sheet_widget.dart';
 import 'package:readingapps/presentation/reading/widgets/reading_dialog_info_widget.dart';
@@ -31,6 +32,10 @@ class ReadingAppbarWidget extends StatelessWidget
               context
                   .read<ReadingBloc>()
                   .add(OnSelectLanguageEvent(country: result));
+
+              context
+                  .read<LanguageBloc>()
+                  .add(OnChangedLanguageEvent(language: result));
             }
           },
           icon: BlocBuilder<ReadingBloc, ReadingState>(
