@@ -3,7 +3,7 @@
 class ImageConstants {
   ImageConstants._();
 
-  static const String BACKGROUND_IMAGE = 'assets/images/dood-background.jpg';
+  static const String BACKGROUND_IMAGE = 'assets/images/dood-background.png';
 }
 
 class CountryConstants {
