@@ -33,6 +33,6 @@ class ReadingBloc extends Bloc<ReadingEvent, ReadingState> {
     OnPressedMainkanPerkataanEvent event,
     Emitter<ReadingState> emit,
   ) {
-    getIt<FlutterTts>().speak(state.syllables.join(' '));
+    getIt<FlutterTts>().speak(state.syllables.join(''));
   }
 }
