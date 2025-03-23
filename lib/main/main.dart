@@ -11,7 +11,7 @@ void main() async {
   AppLocalStorage().setStorage(StorageType.sharedPreferences);
   final String defaultLanguage =
       await AppLocalStorage().read(StorageKeys.language.name) ??
-          CountryEnum.english_uk.languageCode;
+          CountryEnum.malaysia.languageCode;
   final String defaultTTSLanguage =
       await AppLocalStorage().read(StorageKeys.textToSpeech.name) ??
           CountryEnum.malaysia.textToSpeech;
