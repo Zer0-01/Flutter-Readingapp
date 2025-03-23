@@ -1,6 +1,6 @@
-# ISeBa: Mari Membaca! 📖  
+# ISeBa 📖  
 
-**ISeBa: Mari Membaca!** is a Flutter-based reading app designed to help users learn syllables, hear their pronunciation, form words from syllables, and delete words.  
+**ISeBa** is a Flutter-based reading app designed to help users learn syllables, hear their pronunciation, form words from syllables, and delete words. The app supports **localization**, allowing users to switch between **Malay (Bahasa Melayu)** and **English (UK)** modes.  
 
 ## ✨ Features  
 
@@ -8,6 +8,7 @@
 - 🔊 **Hear Syllable Sounds** – Audio playback for each syllable.  
 - 🏗 **Form Words** – Combine syllables into words.  
 - ❌ **Delete Words** – Remove words as needed.  
+- 🌍 **Localization Support** – Choose between **Malay** and **English (UK)** language modes.  
 
 ## 🛠 Tech Stack  
 
@@ -15,3 +16,5 @@
 - 🎯 **Dart** – Programming language for Flutter.  
 - 🔄 **BLoC** – State management pattern.  
 - 🚦 **AutoRoute** – Routing and navigation management.  
+- 🌐 **Localization** – Multi-language support (**Malay & English (UK)**).  
+
