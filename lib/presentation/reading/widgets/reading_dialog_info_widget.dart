@@ -28,7 +28,7 @@ class ReadingDialogInfoWidget extends StatelessWidget {
       actions: [
         FilledButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text("Tutup")),
+            child: Text(context.loc.general_close.capitalize!)),
       ],
     );
   }
