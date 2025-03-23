@@ -41,6 +41,7 @@ class App extends StatelessWidget {
       theme: light,
       darkTheme: dark,
       routerConfig: _appRouter.config(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

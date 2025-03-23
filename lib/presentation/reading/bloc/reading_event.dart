@@ -35,3 +35,8 @@ class OnPressedSyllableEvent extends ReadingEvent {
   @override
   List<Object?> get props => [syllable];
 }
+
+class OnSelectLanguageEvent extends ReadingEvent {
+  final CountryEnum country;
+  const OnSelectLanguageEvent({required this.country});
+}
