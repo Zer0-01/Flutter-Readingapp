@@ -26,7 +26,7 @@ class ReadingFooterWidget extends StatelessWidget {
                     syllableController.clear();
                   }
                 : null,
-            label: Text(context.loc.general_next),
+            label: Text(context.loc.general_next.capitalizeFirst!),
             icon: const Icon(Icons.chevron_right),
             iconAlignment: IconAlignment.end,
           ),
@@ -38,7 +38,8 @@ class ReadingFooterWidget extends StatelessWidget {
                         .add(const OnPressedMainkanPerkataanEvent());
                   }
                 : null,
-            label: const Text("Mainkan sebutan perkataan"),
+            label: Text(
+                context.loc.general_play_word_pronunciation.capitalizeFirst!),
             icon: const Icon(Icons.speaker),
             iconAlignment: IconAlignment.end,
           ),
@@ -54,7 +55,7 @@ class ReadingFooterWidget extends StatelessWidget {
                         .add(const OnPressedPadamEvent());
                   }
                 : null,
-            label: const Text("Padam"),
+            label: Text(context.loc.general_delete.capitalizeFirst!),
             icon: const Icon(Icons.delete),
             iconAlignment: IconAlignment.end,
           ),

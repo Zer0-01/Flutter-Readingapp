@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:get/utils.dart';
+import 'package:readingapps/extensions.dart';
 
 class ReadingDialogInfoWidget extends StatelessWidget {
   const ReadingDialogInfoWidget({super.key});
@@ -8,26 +9,26 @@ class ReadingDialogInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: context.theme.dialogTheme.backgroundColor,
-      title: Text("Cara Menggunakan Aplikasi",
+      title: Text(context.loc.general_how_to_use.capitalize!,
           style: context.theme.textTheme.titleLarge),
-      content: const Column(
+      content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("1. Taipkan suku kata di ruang teks."),
-          Text(
-              "2. Tekan 'Seterusnya' untuk menaipkan suku kata yang seterusnya."),
-          Text(
-              "3. Tekan 'Mainkan sebutan perkataan' untuk mendengar sebutan perkataan yang dihasilkan."),
-          Text(
-              "4. Tekan 'Padam' untuk memadam suku kata atau perkataan yang dibentuk."),
-          Text(
-              "5. Tekan suku kata yang dipaparkan di papan hitam untuk mendengar sebutan suku kata tersebut."),
+          Text(context.loc.general_type_the_syllables_in_the_text_field),
+          Text(context.loc.general_press_next_to_type_the_next_syllable),
+          Text(context.loc
+              .general_press_play_word_pronunciation_to_hear_the_pronunciation_of_the_generated_word),
+          Text(context
+              .loc.general_press_delete_to_delete_the_formed_syllable_or_word),
+          Text(context.loc
+              .general_press_the_syllable_displayed_on_the_blackboard_to_hear_the_pronunciation_of_that_syllable),
         ],
       ),
       actions: [
         FilledButton(
-            onPressed: () => Navigator.pop(context), child: const Text("Tutup")),
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Tutup")),
       ],
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:readingapps/extensions.dart';
 import 'package:readingapps/presentation/reading/bloc/reading_bloc.dart';
 
 class ReadingHeaderWidget extends StatelessWidget {
@@ -73,7 +74,8 @@ class ReadingHeaderWidget extends StatelessWidget {
                       .toList()
                   : [
                       Text(
-                        "Sila masukkan suku kata",
+                        context.loc.general_please_enter_a_syllable
+                            .capitalizeFirst!,
                         style: context.textTheme.bodyLarge?.copyWith(
                             color: context.theme.colorScheme.onPrimary),
                       ),

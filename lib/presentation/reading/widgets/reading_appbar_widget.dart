@@ -2,6 +2,7 @@ import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:readingapps/constants.dart';
+import 'package:readingapps/extensions.dart';
 import 'package:readingapps/presentation/reading/bloc/reading_bloc.dart';
 import 'package:readingapps/presentation/reading/widgets/reading_bottom_sheet_widget.dart';
 import 'package:readingapps/presentation/reading/widgets/reading_dialog_info_widget.dart';
@@ -13,7 +14,7 @@ class ReadingAppbarWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text("ISeBa: Mari membaca !",
+      title: Text(context.loc.general_ISeBa,
           style: Theme.of(context).textTheme.titleLarge),
       foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,

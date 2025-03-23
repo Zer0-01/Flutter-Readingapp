@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:readingapps/extensions.dart';
 
 class ReadingContentWidget extends StatelessWidget {
   final TextEditingController syllableController;
@@ -14,7 +15,7 @@ class ReadingContentWidget extends StatelessWidget {
         filled: true,
         isDense: true,
         fillColor: context.theme.colorScheme.surface,
-        hintText: "Masukkan suku kata",
+        hintText: context.loc.general_please_enter_a_syllable.capitalizeFirst,
         hintStyle: context.textTheme.bodyMedium
             ?.copyWith(color: context.theme.colorScheme.surfaceDim),
         enabledBorder: OutlineInputBorder(

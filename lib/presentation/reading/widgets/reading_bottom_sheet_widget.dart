@@ -2,6 +2,7 @@ import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:readingapps/constants.dart';
+import 'package:readingapps/extensions.dart';
 
 class ReadingBottomSheetWidget extends StatelessWidget {
   ReadingBottomSheetWidget({super.key});
@@ -21,7 +22,7 @@ class ReadingBottomSheetWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Select Language",
+              context.loc.general_select_language.capitalize!,
               style: context.textTheme.titleMedium,
             ),
             ...countries.map((country) => ListTile(
