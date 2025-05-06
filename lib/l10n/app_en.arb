@@ -25,5 +25,7 @@
     "general_press_the_syllable_displayed_on_the_blackboard_to_hear_the_pronunciation_of_that_syllable": "5. Press the syllable displayed on the blackboard to hear the pronunciation of that syllable.",
     "@general_press_the_syllable_displayed_on_the_blackboard_to_hear_the_pronunciation_of_that_syllable": {},
     "general_close": "close",
-    "@general_close": {}
+    "@general_close": {},
+    "home": "Home",
+    "@home": {}
 }
