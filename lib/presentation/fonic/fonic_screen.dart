@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:readingapps/extensions.dart';
 import 'package:readingapps/functions.dart';
@@ -49,16 +50,22 @@ class FonicScreen extends StatelessWidget {
             crossAxisSpacing: 4,
             children: fonicList
                 .map(
-                  (fonic) => Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: getRandomColor(type: ColorType.pastel),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      fonic,
-                      style: const TextStyle(
-                          fontSize: 30, fontWeight: FontWeight.bold),
+                  (fonic) => GestureDetector(
+                    onTap: () {
+                      final audioPlayer = AudioPlayer();
+                      audioPlayer.play(AssetSource('audios/audio_a.mp3'));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: getRandomColor(type: ColorType.pastel),
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        fonic,
+                        style: const TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 )
