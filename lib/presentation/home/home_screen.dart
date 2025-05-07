@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () => context.router.pushPath("/reading"),
+                onTap: () => context.router.pushPath("/fonics"),
                 child: Container(
                   width: context.widthPct(50),
                   height: context.heightPct(20),

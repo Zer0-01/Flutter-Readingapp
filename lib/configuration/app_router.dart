@@ -10,5 +10,6 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(path: "/", page: HomeSetupRoute.page, initial: true),
         AutoRoute(path: "/reading", page: ReadingSetupRoute.page),
+        AutoRoute(path: "/fonics", page: FonicSetupRoute.page),
       ];
 }
