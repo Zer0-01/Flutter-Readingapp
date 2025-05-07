@@ -27,5 +27,9 @@
     "general_close": "close",
     "@general_close": {},
     "home": "Home",
-    "@home": {}
+    "@home": {},
+    "reading": "Reading",
+    "@reading": {},
+     "fonics": "Fonics",
+     "@fonics": {}
 }

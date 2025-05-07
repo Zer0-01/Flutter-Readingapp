@@ -27,5 +27,9 @@
     "general_close": "tutup",
     "@general_close": {},
     "home": "Halaman Utama",
-    "@home": {}
+    "@home": {},
+    "reading": "Membaca",
+    "@reading": {},
+    "fonics": "Fonik",
+    "@fonics": {}
 }
