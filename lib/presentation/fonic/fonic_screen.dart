@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:readingapps/extensions.dart';
+import 'package:readingapps/functions.dart';
 
 class FonicScreen extends StatelessWidget {
   const FonicScreen({super.key});
@@ -12,6 +13,7 @@ class FonicScreen extends StatelessWidget {
       "C",
       "D",
       "E",
+      "E'",
       "F",
       "G",
       "H",
@@ -48,9 +50,16 @@ class FonicScreen extends StatelessWidget {
             children: fonicList
                 .map(
                   (fonic) => Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: getRandomColor(type: ColorType.pastel),
+                    ),
                     alignment: Alignment.center,
-                    color: Colors.blue,
-                    child: Text(fonic),
+                    child: Text(
+                      fonic,
+                      style: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 )
                 .toList(),
