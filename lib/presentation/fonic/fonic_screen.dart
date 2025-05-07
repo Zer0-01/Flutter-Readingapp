@@ -36,20 +36,25 @@ class FonicScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.loc.fonics),
-      ),
-      body: Wrap(
-          children: fonicList
-              .map((fonic) => Container(
-                    margin: const EdgeInsets.all(4),
-                    width: context.widthPct(10),
-                    height: context.heightPct(10),
-                    color: Colors.blue,
+        appBar: AppBar(
+          title: Text(context.loc.fonics),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GridView.count(
+            crossAxisCount: 4,
+            mainAxisSpacing: 4,
+            crossAxisSpacing: 4,
+            children: fonicList
+                .map(
+                  (fonic) => Container(
                     alignment: Alignment.center,
+                    color: Colors.blue,
                     child: Text(fonic),
-                  ))
-              .toList()),
-    );
+                  ),
+                )
+                .toList(),
+          ),
+        ));
   }
 }
