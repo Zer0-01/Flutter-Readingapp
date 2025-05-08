@@ -6,6 +6,11 @@ class ImageConstants {
   static const String BACKGROUND_IMAGE = 'assets/images/dood-background.png';
 }
 
+class AudioConstants {
+  AudioConstants._();
+  static const String AUDIO_A = 'audios/audio_a.mp3';
+}
+
 class CountryConstants {
   CountryConstants._();
   static const String MALAYSIA = 'Malaysia';

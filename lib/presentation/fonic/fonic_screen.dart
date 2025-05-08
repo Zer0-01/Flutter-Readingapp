@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:readingapps/constants.dart';
 import 'package:readingapps/extensions.dart';
 import 'package:readingapps/functions.dart';
 
@@ -53,7 +54,7 @@ class FonicScreen extends StatelessWidget {
                   (fonic) => GestureDetector(
                     onTap: () {
                       final audioPlayer = AudioPlayer();
-                      audioPlayer.play(AssetSource('audios/audio_a.mp3'));
+                      audioPlayer.play(AssetSource(AudioConstants.AUDIO_A));
                     },
                     child: Container(
                       decoration: BoxDecoration(
