@@ -31,5 +31,7 @@
     "reading": "Membaca",
     "@reading": {},
     "fonics": "Fonik",
-    "@fonics": {}
+    "@fonics": {},
+    "coming_soon": "Akan datang",
+    "@coming_soon": {}
 }
