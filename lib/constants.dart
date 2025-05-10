@@ -4,6 +4,9 @@ class ImageConstants {
   ImageConstants._();
 
   static const String BACKGROUND_IMAGE = 'assets/images/dood-background.png';
+  static const String IMAGE_BANNER = 'assets/images/image_banner.png';
+  static const String IMAGE_READING = 'assets/images/image_reading.png';
+  static const String IMAGE_PHONIC = 'assets/images/image_phonic.png';
 }
 
 class AudioConstants {
