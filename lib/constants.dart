@@ -13,6 +13,19 @@ class ImageConstants {
 class AudioConstants {
   AudioConstants._();
   static const String AUDIO_A = 'audios/audio_a.mp3';
+  static const String AUDIO_B = 'audios/audio_b.mp3';
+  static const String AUDIO_C = 'audios/audio_c.mp3';
+  static const String AUDIO_D = 'audios/audio_d.mp3';
+  static const String AUDIO_E = 'audios/audio_e.mp3';
+  static const String AUDIO_E_2 = 'audios/audio_e_2.mp3';
+  static const String AUDIO_F = 'audios/audio_f.mp3';
+  static const String AUDIO_G = 'audios/audio_g.mp3';
+  static const String AUDIO_H = 'audios/audio_h.mp3';
+  static const String AUDIO_I = 'audios/audio_i.mp3';
+  static const String AUDIO_J = 'audios/audio_j.mp3';
+  static const String AUDIO_K = 'audios/audio_k.mp3';
+  static const String AUDIO_L = 'audios/audio_l.mp3';
+  static const String AUDIO_M = 'audios/audio_m.mp3';
 }
 
 class CountryConstants {
