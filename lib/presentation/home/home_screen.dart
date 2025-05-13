@@ -77,6 +77,24 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Column(
+                    spacing: 4,
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: const EdgeInsets.all(8),
+                            color: Colors.grey.shade200,
+                            child: Image.asset(
+                              ImageConstants.IMAGE_COMING_SOON,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(child: Text(context.loc.coming_soon)),
+                    ],
+                  ),
                 ],
               ),
             )

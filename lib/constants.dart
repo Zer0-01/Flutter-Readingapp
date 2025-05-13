@@ -7,6 +7,7 @@ class ImageConstants {
   static const String IMAGE_BANNER = 'assets/images/image_banner.png';
   static const String IMAGE_READING = 'assets/images/image_reading.png';
   static const String IMAGE_PHONIC = 'assets/images/image_phonic.png';
+  static const String IMAGE_COMING_SOON = 'assets/images/image_coming_soon.png';
 }
 
 class AudioConstants {
