@@ -27,7 +27,7 @@
             "name": "IseBa Development (debug)",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main/main.dart",
+            "program": "lib/main/main_dev.dart",
             "args": [
                 "--flavor",
                 "development"
@@ -38,7 +38,7 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "program": "lib/main/main.dart",
+            "program": "lib/main/main_dev.dart",
             "args": [
                 "--flavor",
                 "development"
@@ -48,7 +48,7 @@
             "name": "IseBa Staging (debug)",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main/main.dart",
+            "program": "lib/main/main_stag.dart",
             "args": [
                 "--flavor",
                 "staging"
@@ -59,7 +59,7 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "program": "lib/main/main.dart",
+            "program": "lib/main/main_stag.dart",
             "args": [
                 "--flavor",
                 "staging"
@@ -69,7 +69,7 @@
             "name": "IseBa Production (debug)",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main/main.dart",
+            "program": "lib/main/main_prod.dart",
             "args": [
                 "--flavor",
                 "production"
@@ -80,7 +80,7 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "program": "lib/main/main.dart",
+            "program": "lib/main/main_prod.dart",
             "args": [
                 "--flavor",
                 "production"
