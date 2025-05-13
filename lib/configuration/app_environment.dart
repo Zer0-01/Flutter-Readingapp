@@ -1,5 +1,12 @@
 enum Environment { dev, stag, prod }
 
+/// Manages application environment configuration and provides access to environment-specific constants.
+///
+/// This class allows setting and checking the current application environment (dev, staging, production)
+/// and provides access to environment-specific configuration parameters.
+///
+/// Environments can be set using [setEnvironment] method, and current environment can be checked
+/// using [isProduction], [isDevelopment], and [isStaging] getters.
 class ProfileConstants {
   static Map<String, dynamic>? _config;
 
