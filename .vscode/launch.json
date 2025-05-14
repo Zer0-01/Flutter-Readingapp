@@ -22,6 +22,69 @@
             "type": "dart",
             "flutterMode": "release",
             "program": "lib/main/main.dart"
+        },
+        {
+            "name": "IseBa Development (debug)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main/main_dev.dart",
+            "args": [
+                "--flavor",
+                "development"
+            ]
+        },
+        {
+            "name": "IseBa Development (release)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main/main_dev.dart",
+            "args": [
+                "--flavor",
+                "development"
+            ]
+        },
+        {
+            "name": "IseBa Staging (debug)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main/main_stag.dart",
+            "args": [
+                "--flavor",
+                "staging"
+            ]
+        },
+        {
+            "name": "IseBa Staging (release)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main/main_stag.dart",
+            "args": [
+                "--flavor",
+                "staging"
+            ]
+        },
+        {
+            "name": "IseBa Production (debug)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main/main_prod.dart",
+            "args": [
+                "--flavor",
+                "production"
+            ]
+        },
+        {
+            "name": "IseBa Production (release)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main/main_prod.dart",
+            "args": [
+                "--flavor",
+                "production"
+            ]
         }
     ]
 }

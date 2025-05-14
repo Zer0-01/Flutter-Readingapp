@@ -31,5 +31,7 @@
     "reading": "Reading",
     "@reading": {},
      "fonics": "Fonics",
-     "@fonics": {}
+     "@fonics": {},
+     "coming_soon": "Coming soon",
+     "@coming_soon": {}
 }
