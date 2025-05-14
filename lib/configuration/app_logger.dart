@@ -2,6 +2,18 @@ import 'package:logger/logger.dart';
 
 enum LogFormat { simple, extended }
 
+/// Configures the application logger with specified settings.
+///
+/// [isProduction] determines the logging level and filter strategy.
+/// [logToFile] is currently unused but reserved for future file logging implementation.
+/// [logFormat] allows selecting between simple and extended log output formats.
+///
+/// The method sets up logging configuration globally for the application:
+/// - In production, sets log level to [Level.info]
+/// - In development, sets log level to [Level.debug]
+/// - Configures log printer based on selected [LogFormat]
+/// - Uses console output by default
+/// - Applies appropriate filter based on environment
 class AppLogger {
   static late Logger _logger;
   static late Level _level;
