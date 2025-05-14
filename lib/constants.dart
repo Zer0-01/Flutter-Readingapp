@@ -26,6 +26,19 @@ class AudioConstants {
   static const String AUDIO_K = 'audios/audio_k.mp3';
   static const String AUDIO_L = 'audios/audio_l.mp3';
   static const String AUDIO_M = 'audios/audio_m.mp3';
+  static const String AUDIO_N = 'audios/audio_n.mp3';
+  static const String AUDIO_O = 'audios/audio_o.mp3';
+  static const String AUDIO_P = 'audios/audio_p.mp3';
+  static const String AUDIO_Q = 'audios/audio_q.mp3';
+  static const String AUDIO_R = 'audios/audio_r.mp3';
+  static const String AUDIO_S = 'audios/audio_s.mp3';
+  static const String AUDIO_T = 'audios/audio_t.mp3';
+  static const String AUDIO_U = 'audios/audio_u.mp3';
+  static const String AUDIO_V = 'audios/audio_v.mp3';
+  static const String AUDIO_W = 'audios/audio_w.mp3';
+  static const String AUDIO_X = 'audios/audio_x.mp3';
+  static const String AUDIO_Y = 'audios/audio_y.mp3';
+  static const String AUDIO_Z = 'audios/audio_z.mp3';
 }
 
 class CountryConstants {
