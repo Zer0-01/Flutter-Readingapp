@@ -25,6 +25,19 @@ class FonicScreen extends StatelessWidget {
       Phonic(name: "K", audio: AudioConstants.AUDIO_K),
       Phonic(name: "L", audio: AudioConstants.AUDIO_L),
       Phonic(name: "M", audio: AudioConstants.AUDIO_M),
+      Phonic(name: "N", audio: AudioConstants.AUDIO_N),
+      Phonic(name: "O", audio: AudioConstants.AUDIO_O),
+      Phonic(name: "P", audio: AudioConstants.AUDIO_P),
+      Phonic(name: "Q", audio: AudioConstants.AUDIO_Q),
+      Phonic(name: "R", audio: AudioConstants.AUDIO_R),
+      Phonic(name: "S", audio: AudioConstants.AUDIO_S),
+      Phonic(name: "T", audio: AudioConstants.AUDIO_T),
+      Phonic(name: "U", audio: AudioConstants.AUDIO_U),
+      Phonic(name: "V", audio: AudioConstants.AUDIO_V),
+      Phonic(name: "W", audio: AudioConstants.AUDIO_W),
+      Phonic(name: "X", audio: AudioConstants.AUDIO_X),
+      Phonic(name: "Y", audio: AudioConstants.AUDIO_Y),
+      Phonic(name: "Z", audio: AudioConstants.AUDIO_Z),
     ];
 
     return Scaffold(
