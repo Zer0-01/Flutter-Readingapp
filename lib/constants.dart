@@ -41,6 +41,11 @@ class AudioConstants {
   static const String AUDIO_Z = 'audios/audio_z.mp3';
 }
 
+class AnimationConstants {
+  AnimationConstants._();
+  static const String ANIMATION_LOADING = 'animations/animation_loading.json';
+}
+
 class CountryConstants {
   CountryConstants._();
   static const String MALAYSIA = 'Malaysia';

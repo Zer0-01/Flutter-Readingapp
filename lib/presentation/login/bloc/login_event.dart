@@ -11,3 +11,9 @@ class OnPressedEyeIconEvent extends LoginEvent {
   @override
   List<Object?> get props => [];
 }
+
+class OnPressedLoginButtonEvent extends LoginEvent {
+  const OnPressedLoginButtonEvent();
+  @override
+  List<Object?> get props => [];
+}
