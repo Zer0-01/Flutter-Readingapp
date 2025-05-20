@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:readingapps/configuration/di.dart';
+import 'package:readingapps/configuration/app_di.dart';
 import 'package:readingapps/constants.dart';
 
 part 'language_event.dart';
