@@ -53,6 +53,7 @@ dependencies:
   shared_preferences: ^2.5.2
   audioplayers: ^6.4.0
   logger: ^2.5.0
+  lottie: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -88,6 +89,7 @@ flutter:
   assets:
     - assets/images/
     - assets/audios/
+    - assets/animations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

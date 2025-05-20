@@ -10,11 +10,23 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   LoginBloc() : super(const LoginState()) {
     on<OnPressedEyeIconEvent>(_onPressedEyeIconEvent);
+    on<OnPressedLoginButtonEvent>(_onPressedLoginButtonEvent);
   }
 
   void _onPressedEyeIconEvent(
       OnPressedEyeIconEvent event, Emitter<LoginState> emit) {
     _log.debug("BEGIN: _onPressedEyeIconEvent");
     emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
+  }
+
+  Future<void> _onPressedLoginButtonEvent(
+      OnPressedLoginButtonEvent event, Emitter<LoginState> emit) async {
+    _log.debug("BEGIN: _onPressedLoginButtonEvent");
+
+    emit(state.copyWith(loginStatus: LoginStatus.loading));
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    emit(state.copyWith(loginStatus: LoginStatus.success));
   }
 }
