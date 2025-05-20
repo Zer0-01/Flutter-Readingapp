@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:readingapps/configuration/app_router.gr.dart';
+import 'package:readingapps/configuration/app_router/app_router.gr.dart';
 
 /// Configures the application's routing using AutoRoute.
 ///
@@ -19,8 +19,9 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(path: "/", page: HomeSetupRoute.page, initial: true),
+        AutoRoute(path: "/home", page: HomeSetupRoute.page),
         AutoRoute(path: "/reading", page: ReadingSetupRoute.page),
         AutoRoute(path: "/fonics", page: FonicSetupRoute.page),
+        AutoRoute(path: "/", page: LoginSetupRoute.page, initial: true),
       ];
 }
