@@ -33,5 +33,17 @@
     "fonics": "Fonik",
     "@fonics": {},
     "coming_soon": "Akan datang",
-    "@coming_soon": {}
+    "@coming_soon": {},
+    "email": "Email",
+    "@email": {},
+    "password": "Kata laluan",
+    "@password": {},
+    "login": "Log masuk",
+    "@login": {},
+    "dont_have_an_account": "Tidak mempunyai akaun?",
+    "@dont_have_an_account": {},
+    "register": "Daftar",
+    "@register": {},
+    "login_failed_please_try_again": "Log masuk tidak berjaya. Sila cuba lagi.",
+    "@login_failed_please_try_again": {}
 }
