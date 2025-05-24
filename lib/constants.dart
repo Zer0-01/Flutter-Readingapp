@@ -43,7 +43,8 @@ class AudioConstants {
 
 class AnimationConstants {
   AnimationConstants._();
-  static const String ANIMATION_LOADING = 'animations/animation_loading.json';
+  static const String ANIMATION_LOADING =
+      'assets/animations/animation_loading.json';
 }
 
 class CountryConstants {
