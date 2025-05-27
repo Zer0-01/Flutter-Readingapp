@@ -13,7 +13,12 @@ class OnPressedEyeIconEvent extends LoginEvent {
 }
 
 class OnPressedLoginButtonEvent extends LoginEvent {
-  const OnPressedLoginButtonEvent();
+  final String email;
+  final String password;
+
+  const OnPressedLoginButtonEvent(
+      {required this.email, required this.password});
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [email, password];
 }
