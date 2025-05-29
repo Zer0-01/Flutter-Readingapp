@@ -1,13 +1,39 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/utils.dart';
 import 'package:readingapps/extensions.dart';
 import 'package:readingapps/presentation/register/bloc/register_bloc.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
-  RegisterScreen({super.key});
+  late final TextEditingController _nameController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +45,23 @@ class RegisterScreen extends StatelessWidget {
             },
             icon: const Icon(Icons.chevron_left)),
       ),
-      body: BlocBuilder<RegisterBloc, RegisterState>(
+      body: BlocConsumer<RegisterBloc, RegisterState>(
+        listenWhen: (previous, current) =>
+            previous.registerStatus != current.registerStatus,
+        listener: (context, state) {
+          if (state.registerStatus == RegisterStatus.loading) {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return const CupertinoActivityIndicator();
+              },
+            );
+          } else if (state.registerStatus == RegisterStatus.success) {
+            Navigator.pop(context);
+          } else if (state.registerStatus == RegisterStatus.failure) {
+            Navigator.pop(context);
+          }
+        },
         builder: (context, state) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,6 +81,7 @@ class RegisterScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: _nameController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return context.loc.please_enter_your_name;
@@ -52,6 +95,7 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                     TextFormField(
+                      controller: _emailController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return context.loc.please_enter_your_email;
@@ -69,6 +113,7 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                     TextFormField(
+                      controller: _passwordController,
                       obscureText: state.isObscureText,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -105,10 +150,11 @@ class RegisterScreen extends StatelessWidget {
                         child: FilledButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text('Processing Data')),
-                                );
+                                context.read<RegisterBloc>().add(
+                                    OnPressedRegisterEvent(
+                                        name: _nameController.text,
+                                        email: _emailController.text,
+                                        password: _passwordController.text));
                               }
                             },
                             child: Text(context.loc.register))),
