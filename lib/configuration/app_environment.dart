@@ -45,7 +45,7 @@ class _Config {
   static const api = "API";
 
   static Map<String, dynamic> devConstants = {
-    api: "http://127.0.0.1:3000",
+    api: "http://10.0.2.2:3000",
   };
 
   static Map<String, dynamic> stagConstants = {

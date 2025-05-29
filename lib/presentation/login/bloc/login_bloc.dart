@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:readingapps/configuration/app_logger.dart';
@@ -29,13 +30,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     _log.debug("BEGIN: _onPressedLoginButtonEvent");
 
     emit(state.copyWith(loginStatus: LoginStatus.loading));
+    try {
+      final AuthDtoRequest authDtoRequest =
+          AuthDtoRequest(email: event.email, password: event.password);
 
-    await Future.delayed(const Duration(seconds: 2));
+      await _authRepository.postAuth(authDtoRequest);
 
-    final authDtoRequest =
-        AuthDtoRequest(email: event.email, password: event.password);
-    await _authRepository.postAuth(authDtoRequest);
-
-    emit(state.copyWith(loginStatus: LoginStatus.success));
+      emit(state.copyWith(loginStatus: LoginStatus.success));
+    } on DioException catch (e) {
+      _log.error(e.message);
+      emit(state.copyWith(loginStatus: LoginStatus.error));
+    } catch (e) {
+      _log.error(e.toString());
+      emit(state.copyWith(loginStatus: LoginStatus.error));
+    }
   }
 }
