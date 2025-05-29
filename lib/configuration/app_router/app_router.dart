@@ -23,5 +23,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(path: "/reading", page: ReadingSetupRoute.page),
         AutoRoute(path: "/fonics", page: FonicSetupRoute.page),
         AutoRoute(path: "/", page: LoginSetupRoute.page, initial: true),
+        AutoRoute(path: "/register", page: RegisterSetupRoute.page),
       ];
 }
