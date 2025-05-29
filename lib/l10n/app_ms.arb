@@ -45,5 +45,14 @@
     "register": "Daftar",
     "@register": {},
     "login_failed_please_try_again": "Log masuk tidak berjaya. Sila cuba lagi.",
-    "@login_failed_please_try_again": {}
+    "@login_failed_please_try_again": {},
+    "create_an_account": "Buat akaun.",
+    "welcome_please_enter_your_details": "Selamat datang. Sila masukkan maklumat anda.",
+    "name": "Nama",
+    "please_enter_your_name": "Sila masukkan nama anda.",
+    "please_enter_your_email": "Sila masukkan alamat email anda.",
+    "please_enter_a_valid_email": "Sila masukkan alamat email yang sah.",
+    "please_enter_your_password": "Sila masukkan kata laluan anda.",
+    "password_must_be_at_least_6_characters": "Kata laluan harus terdiri dari setidaknya 6 karakter.",
+    "password_must_be_alphanumeric": "Kata laluan harus mengandungi huruf dan angka."
 }

@@ -83,15 +83,21 @@ class LoginScreen extends StatelessWidget {
                     },
                     child: Text(context.loc.login),
                   ),
-                  RichText(
-                      text: TextSpan(
-                          text: context.loc.dont_have_an_account,
-                          style: const TextStyle(color: Colors.black),
-                          children: [
-                        TextSpan(
-                            text: " ${context.loc.register}",
-                            style: TextStyle(color: context.theme.primaryColor))
-                      ]))
+                  GestureDetector(
+                    onTap: () {
+                      context.router.pushPath("/register");
+                    },
+                    child: RichText(
+                        text: TextSpan(
+                            text: context.loc.dont_have_an_account,
+                            style: const TextStyle(color: Colors.black),
+                            children: [
+                          TextSpan(
+                              text: " ${context.loc.register}",
+                              style:
+                                  TextStyle(color: context.theme.primaryColor))
+                        ])),
+                  )
                 ],
               );
             }),
