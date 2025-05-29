@@ -10,7 +10,7 @@ import 'package:readingapps/main/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  AppLogger.configure(isProduction: false);
+  AppLogger.configure();
   ProfileConstants.setEnvironment(Environment.dev);
   AppLocalStorage().setStorage(StorageType.sharedPreferences);
   final String defaultLanguage =
