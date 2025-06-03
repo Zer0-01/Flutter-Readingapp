@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:readingapps/configuration/app_environment.dart';
 
 enum DioMethod { get, post, put, delete }
@@ -25,6 +26,8 @@ class DioUtils {
           contentType: contentType ?? Headers.formUrlEncodedContentType,
         ),
       );
+
+      dio.interceptors.add(PrettyDioLogger());
       switch (method) {
         case DioMethod.post:
           return dio.post(
