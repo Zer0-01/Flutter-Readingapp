@@ -40,10 +40,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {
-              context.router.pop();
-            },
-            icon: const Icon(Icons.chevron_left)),
+          onPressed: () {
+            context.router.pop();
+          },
+          icon: const Icon(Icons.chevron_left),
+        ),
+        title: Text(context.loc.create_an_account),
+        centerTitle: true,
       ),
       body: BlocConsumer<RegisterBloc, RegisterState>(
         listenWhen: (previous, current) =>
@@ -63,105 +66,100 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         },
         builder: (context, state) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                context.loc.create_an_account,
-                style: context.textTheme.headlineLarge
-                    ?.copyWith(color: Colors.black),
+          return Form(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                spacing: 16,
+                children: [
+                  TextFormField(
+                    controller: _nameController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return context.loc.please_enter_your_name;
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: context.loc.name,
+                      enabledBorder: const OutlineInputBorder(),
+                      focusedBorder: const OutlineInputBorder(),
+                      errorBorder: const OutlineInputBorder(),
+                      focusedErrorBorder: const OutlineInputBorder(),
+                    ),
+                  ),
+                  TextFormField(
+                    controller: _emailController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return context.loc.please_enter_your_email;
+                      }
+
+                      if (!value.isEmail) {
+                        return context.loc.please_enter_a_valid_email;
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: context.loc.email,
+                      enabledBorder: const OutlineInputBorder(),
+                      focusedBorder: const OutlineInputBorder(),
+                      errorBorder: const OutlineInputBorder(),
+                      focusedErrorBorder: const OutlineInputBorder(),
+                    ),
+                  ),
+                  TextFormField(
+                    controller: _passwordController,
+                    obscureText: state.isObscureText,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return context.loc.please_enter_your_password;
+                      }
+
+                      if (value.isNumericOnly || value.isAlphabetOnly) {
+                        return context.loc.password_must_be_alphanumeric;
+                      }
+
+                      if (value.length < 6) {
+                        return context
+                            .loc.password_must_be_at_least_6_characters;
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: context.loc.password,
+                      suffixIcon: GestureDetector(
+                          onTap: () {
+                            context
+                                .read<RegisterBloc>()
+                                .add(const OnTapObscureEvent());
+                          },
+                          child: Icon(state.isObscureText
+                              ? Icons.visibility_off
+                              : Icons.visibility)),
+                      enabledBorder: const OutlineInputBorder(),
+                      focusedBorder: const OutlineInputBorder(),
+                      errorBorder: const OutlineInputBorder(),
+                      focusedErrorBorder: const OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(
+                      width: context.width,
+                      child: FilledButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              context.read<RegisterBloc>().add(
+                                  OnPressedRegisterEvent(
+                                      name: _nameController.text,
+                                      email: _emailController.text,
+                                      password: _passwordController.text));
+                            }
+                          },
+                          child: Text(context.loc.register))),
+                ],
               ),
-              Text(
-                context.loc.welcome_please_enter_your_details,
-                style: context.textTheme.labelLarge
-                    ?.copyWith(color: Colors.black45),
-              ),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: _nameController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return context.loc.please_enter_your_name;
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        labelText: context.loc.name,
-                        enabledBorder: const OutlineInputBorder(),
-                        focusedBorder: const OutlineInputBorder(),
-                      ),
-                    ),
-                    TextFormField(
-                      controller: _emailController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return context.loc.please_enter_your_email;
-                        }
-
-                        if (!value.isEmail) {
-                          return context.loc.please_enter_a_valid_email;
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        labelText: context.loc.email,
-                        enabledBorder: const OutlineInputBorder(),
-                        focusedBorder: const OutlineInputBorder(),
-                      ),
-                    ),
-                    TextFormField(
-                      controller: _passwordController,
-                      obscureText: state.isObscureText,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return context.loc.please_enter_your_password;
-                        }
-
-                        if (value.isNumericOnly || value.isAlphabetOnly) {
-                          return context.loc.password_must_be_alphanumeric;
-                        }
-
-                        if (value.length < 6) {
-                          return context
-                              .loc.password_must_be_at_least_6_characters;
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        labelText: context.loc.password,
-                        suffixIcon: GestureDetector(
-                            onTap: () {
-                              context
-                                  .read<RegisterBloc>()
-                                  .add(const OnTapObscureEvent());
-                            },
-                            child: Icon(state.isObscureText
-                                ? Icons.visibility_off
-                                : Icons.visibility)),
-                        enabledBorder: const OutlineInputBorder(),
-                        focusedBorder: const OutlineInputBorder(),
-                      ),
-                    ),
-                    SizedBox(
-                        width: context.width,
-                        child: FilledButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                context.read<RegisterBloc>().add(
-                                    OnPressedRegisterEvent(
-                                        name: _nameController.text,
-                                        email: _emailController.text,
-                                        password: _passwordController.text));
-                              }
-                            },
-                            child: Text(context.loc.register))),
-                  ],
-                ),
-              )
-            ],
+            ),
           );
         },
       ),

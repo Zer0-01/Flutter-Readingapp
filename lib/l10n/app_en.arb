@@ -46,7 +46,7 @@
     "@register": {},
     "login_failed_please_try_again": "Login failed. Please try again.",
     "@login_failed_please_try_again": {},
-    "create_an_account": "Create an account.",
+    "create_an_account": "Create an Account",
     "@create_an_account": {},
     "welcome_please_enter_your_details":"Welcome. Please enter your details.",
     "@welcome_please_enter_your_details": {},
