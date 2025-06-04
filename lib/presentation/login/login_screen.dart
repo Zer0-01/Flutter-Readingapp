@@ -79,7 +79,8 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                       context.read<LoginBloc>().add(
                           const OnPressedLoginButtonEvent(
-                              email: "test", password: "meow"));
+                              email: "anas1@gmail.com",
+                              password: "Blackkuro01"));
                     },
                     child: Text(context.loc.login),
                   ),
