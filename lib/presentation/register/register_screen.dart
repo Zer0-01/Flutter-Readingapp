@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/utils.dart';
 import 'package:readingapps/extensions.dart';
+import 'package:readingapps/presentation/common_widgets/app_bar_back_button.dart';
 import 'package:readingapps/presentation/register/bloc/register_bloc.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -38,15 +39,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            context.router.pop();
-          },
-          icon: const Icon(Icons.chevron_left),
-        ),
-        title: Text(context.loc.create_an_account),
-        centerTitle: true,
+      appBar: AppBarBackButton(
+        title: context.loc.create_an_account,
+        onPressed: () => context.router.pop(),
       ),
       body: BlocConsumer<RegisterBloc, RegisterState>(
         listenWhen: (previous, current) =>
