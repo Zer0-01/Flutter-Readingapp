@@ -54,5 +54,8 @@
     "please_enter_a_valid_email": "Sila masukkan alamat email yang sah.",
     "please_enter_your_password": "Sila masukkan kata laluan anda.",
     "password_must_be_at_least_6_characters": "Kata laluan harus terdiri dari setidaknya 6 karakter.",
-    "password_must_be_alphanumeric": "Kata laluan harus mengandungi huruf dan angka."
+    "password_must_be_alphanumeric": "Kata laluan harus mengandungi huruf dan angka.",
+    "success_exclamation_mark": "Berjaya!",
+    "registration_successful": "Pendaftaran berjaya! Selamat datang. Anda kini boleh log masuk dan mula meneroka.",
+    "back_to_login_page": "Kembali ke halaman log masuk"
 }

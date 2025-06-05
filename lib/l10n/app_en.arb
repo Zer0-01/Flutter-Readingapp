@@ -48,7 +48,7 @@
     "@login_failed_please_try_again": {},
     "create_an_account": "Create an Account",
     "@create_an_account": {},
-    "welcome_please_enter_your_details":"Welcome. Please enter your details.",
+    "welcome_please_enter_your_details": "Welcome. Please enter your details.",
     "@welcome_please_enter_your_details": {},
     "name": "Name",
     "@name": {},
@@ -63,5 +63,11 @@
     "password_must_be_at_least_6_characters": "Password must be at least 6 characters.",
     "@password_must_be_at_least_6_characters": {},
     "password_must_be_alphanumeric": "Password must be alphanumeric.",
-    "@password_must_be_alphanumeric": {}
+    "@password_must_be_alphanumeric": {},
+    "success_exclamation_mark": "Success!",
+    "@success_exclamation_mark": {},
+    "registration_successful": "Registration successful! Welcome aboard. You can now log in and start exploring.",
+    "@registration_successful": {},
+    "back_to_login_page": "Back to Login Page",
+    "@back_to_login_page": {}
 }
