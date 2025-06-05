@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/utils.dart';
 import 'package:readingapps/extensions.dart';
+import 'package:readingapps/functions.dart';
 import 'package:readingapps/presentation/common_widgets/app_bar_back_button.dart';
 import 'package:readingapps/presentation/register/bloc/register_bloc.dart';
+import 'package:readingapps/presentation/register/widgets/register_success_dialog_widget.dart';
+import 'package:toastification/toastification.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -49,15 +52,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
         listener: (context, state) {
           if (state.registerStatus == RegisterStatus.loading) {
             showDialog(
+              barrierDismissible: false,
               context: context,
               builder: (context) {
-                return const CupertinoActivityIndicator();
+                return const CupertinoActivityIndicator(
+                  color: Colors.white,
+                  radius: 16,
+                );
               },
             );
           } else if (state.registerStatus == RegisterStatus.success) {
             Navigator.pop(context);
+            showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) => const RegisterSuccessDialogWidget());
           } else if (state.registerStatus == RegisterStatus.failure) {
             Navigator.pop(context);
+            showErrorToast(
+                context, state.dioExceptionType, state.dioBadResponseCode);
           }
         },
         builder: (context, state) {
@@ -83,6 +96,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       errorBorder: const OutlineInputBorder(),
                       focusedErrorBorder: const OutlineInputBorder(),
                     ),
+                    onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   ),
                   TextFormField(
                     controller: _emailController,
@@ -103,6 +117,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       errorBorder: const OutlineInputBorder(),
                       focusedErrorBorder: const OutlineInputBorder(),
                     ),
+                    onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   ),
                   TextFormField(
                     controller: _passwordController,
@@ -138,6 +153,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       errorBorder: const OutlineInputBorder(),
                       focusedErrorBorder: const OutlineInputBorder(),
                     ),
+                    onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   ),
                   SizedBox(
                       width: context.width,

@@ -57,6 +57,7 @@ dependencies:
   dio: ^5.8.0+1
   json_annotation: ^4.9.0
   pretty_dio_logger: ^1.4.0
+  toastification: ^3.0.3
 
 dev_dependencies:
   flutter_test:
@@ -94,6 +95,7 @@ flutter:
     - assets/images/
     - assets/audios/
     - assets/animations/
+    - assets/vectors/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

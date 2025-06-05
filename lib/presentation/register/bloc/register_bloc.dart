@@ -29,21 +29,26 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
     emit(state.copyWith(registerStatus: RegisterStatus.loading));
 
-    await Future.delayed(const Duration(seconds: 6));
+    await Future.delayed(const Duration(seconds: 2));
 
-    try {
-      final RegisterDtoRequest registerDtoRequest = RegisterDtoRequest(
-        name: event.name,
-        email: event.email,
-        password: event.password,
-      );
-      await _authRepository.postRegister(registerDtoRequest);
-      emit(state.copyWith(registerStatus: RegisterStatus.success));
-    } on DioException catch (e) {
-      _log.error("Error: $e");
-      emit(state.copyWith(registerStatus: RegisterStatus.failure));
-    } catch (e) {
-      emit(state.copyWith(registerStatus: RegisterStatus.failure));
-    }
+    emit(state.copyWith(
+        registerStatus: RegisterStatus.failure,
+        dioExceptionType: DioExceptionType.connectionError,
+        dioBadResponseCode: 0));
+
+    // try {
+    //   final RegisterDtoRequest registerDtoRequest = RegisterDtoRequest(
+    //     name: event.name,
+    //     email: event.email,
+    //     password: event.password,
+    //   );
+    //   await _authRepository.postRegister(registerDtoRequest);
+    //   emit(state.copyWith(registerStatus: RegisterStatus.success));
+    // } on DioException catch (e) {
+    //   _log.error("Error: $e");
+    //   emit(state.copyWith(registerStatus: RegisterStatus.failure));
+    // } catch (e) {
+    //   emit(state.copyWith(registerStatus: RegisterStatus.failure));
+    // }
   }
 }

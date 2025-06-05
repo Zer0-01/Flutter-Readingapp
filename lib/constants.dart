@@ -10,6 +10,12 @@ class ImageConstants {
   static const String IMAGE_COMING_SOON = 'assets/images/image_coming_soon.png';
 }
 
+class VectorConstants {
+  VectorConstants._();
+  static const String VECTOR_SUCCESS_FILLED =
+      'assets/vectors/vector_success_filled.svg';
+}
+
 class AudioConstants {
   AudioConstants._();
   static const String AUDIO_A = 'audios/audio_a.mp3';
