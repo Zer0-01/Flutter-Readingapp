@@ -1,5 +1,7 @@
 import 'dart:math';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:toastification/toastification.dart';
 
 /// Generates a random color based on the specified [type].
 ///
@@ -46,4 +48,82 @@ Color getRandomColor({ColorType type = ColorType.defaultColor}) {
         random.nextInt(256),
       );
   }
+}
+
+/// Displays a toast notification with an error message based on the specific Dio exception type and status code.
+///
+/// This function provides user-friendly error messages for different types of network request failures,
+/// including timeout, connection, server, and authentication errors.
+///
+/// [context] The BuildContext used to display the toast notification.
+/// [type] The specific type of Dio exception encountered during the network request.
+/// [statusCode] The HTTP status code returned by the server (if applicable).
+///
+/// The toast notification includes a title and description that explains the nature of the error,
+/// helping users understand what went wrong during the registration process.
+void showErrorToast(
+  BuildContext context,
+  DioExceptionType type,
+  int statusCode,
+) {
+  String title = "Request Failed";
+  String description = "An unexpected error occurred.";
+
+  switch (type) {
+    case DioExceptionType.connectionTimeout:
+      title = "Timeout";
+      description = "Connection timed out. Please try again.";
+      break;
+    case DioExceptionType.sendTimeout:
+      title = "Timeout";
+      description = "Sending data took too long.";
+      break;
+    case DioExceptionType.receiveTimeout:
+      title = "Timeout";
+      description = "Server took too long to respond.";
+      break;
+    case DioExceptionType.connectionError:
+      title = "Network Error";
+      description = "No internet connection. Check your network settings.";
+      break;
+    case DioExceptionType.badCertificate:
+      title = "Security Error";
+      description = "Bad certificate detected. Cannot continue.";
+      break;
+    case DioExceptionType.cancel:
+      title = "Cancelled";
+      description = "Request was cancelled.";
+      break;
+    case DioExceptionType.badResponse:
+      title = "Server Error";
+      if (statusCode == 400) {
+        description = "Bad request. Please check the data you provided.";
+      } else if (statusCode == 401) {
+        description = "Unauthorized. Please log in again.";
+      } else if (statusCode == 403) {
+        description = "Forbidden access. You don't have permission.";
+      } else if (statusCode == 404) {
+        description = "The requested resource was not found.";
+      } else if (statusCode >= 500) {
+        description = "Server error. Please try again later.";
+      } else {
+        description = "Unexpected server response.";
+      }
+      break;
+    case DioExceptionType.unknown:
+      title = "Unknown Error";
+      description = "Something went wrong. Please try again.";
+      break;
+  }
+
+  toastification.show(
+    context: context,
+    type: ToastificationType.error,
+    style: ToastificationStyle.flat,
+    title: Text(title),
+    description: Text(description),
+    alignment: Alignment.bottomCenter,
+    autoCloseDuration: const Duration(seconds: 4),
+    borderRadius: BorderRadius.circular(12.0),
+  );
 }
