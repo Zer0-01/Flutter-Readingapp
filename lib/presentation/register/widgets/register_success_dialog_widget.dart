@@ -26,12 +26,12 @@ class RegisterSuccessDialogWidget extends StatelessWidget {
                     color: Colors.green.shade600,
                   ),
                   Text(
-                    "Success",
+                    context.loc.success_exclamation_mark,
                     style: context.textTheme.headlineLarge
                         ?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Registration successful! Welcome aboard. You can now log in and start exploring.",
+                    context.loc.registration_successful,
                     style: context.textTheme.bodyMedium,
                   ),
                 ],
@@ -41,7 +41,7 @@ class RegisterSuccessDialogWidget extends StatelessWidget {
                     context.router.replaceAll([const LoginSetupRoute()],
                         updateExistingRoutes: false);
                   },
-                  child: const Text("Back to Login Page"))
+                  child: Text(context.loc.back_to_login_page))
             ],
           ),
         ),
