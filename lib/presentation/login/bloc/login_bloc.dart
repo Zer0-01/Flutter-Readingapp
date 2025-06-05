@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:readingapps/configuration/app_logger.dart';
-import 'package:readingapps/data/models/request/auth_dto_request.dart';
 import 'package:readingapps/data/models/request/login_dto_request.dart';
 import 'package:readingapps/data/repository/auth_repository.dart';
 
