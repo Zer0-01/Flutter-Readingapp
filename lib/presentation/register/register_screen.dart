@@ -8,7 +8,6 @@ import 'package:readingapps/functions.dart';
 import 'package:readingapps/presentation/common_widgets/app_bar_back_button.dart';
 import 'package:readingapps/presentation/register/bloc/register_bloc.dart';
 import 'package:readingapps/presentation/register/widgets/register_success_dialog_widget.dart';
-import 'package:toastification/toastification.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
