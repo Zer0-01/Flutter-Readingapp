@@ -96,19 +96,7 @@ void showErrorToast(
       break;
     case DioExceptionType.badResponse:
       title = "Server Error";
-      if (statusCode == 400) {
-        description = "Bad request. Please check the data you provided.";
-      } else if (statusCode == 401) {
-        description = "Unauthorized. Please log in again.";
-      } else if (statusCode == 403) {
-        description = "Forbidden access. You don't have permission.";
-      } else if (statusCode == 404) {
-        description = "The requested resource was not found.";
-      } else if (statusCode >= 500) {
-        description = "Server error. Please try again later.";
-      } else {
-        description = "Unexpected server response.";
-      }
+      description = "Server responded with an error. Status code: $statusCode";
       break;
     case DioExceptionType.unknown:
       title = "Unknown Error";

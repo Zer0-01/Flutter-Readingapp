@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:readingapps/configuration/app_router/app_router.gr.dart';
 import 'package:readingapps/extensions.dart';
 
 class RegisterSuccessDialogWidget extends StatelessWidget {
@@ -36,7 +38,8 @@ class RegisterSuccessDialogWidget extends StatelessWidget {
               ),
               FilledButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    context.router.replaceAll([const LoginSetupRoute()],
+                        updateExistingRoutes: false);
                   },
                   child: const Text("Back to Login Page"))
             ],
