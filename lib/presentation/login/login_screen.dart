@@ -8,8 +8,30 @@ import 'package:readingapps/constants.dart';
 import 'package:readingapps/extensions.dart';
 import 'package:readingapps/presentation/login/bloc/login_bloc.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +74,7 @@ class LoginScreen extends StatelessWidget {
                     size: context.heightPct(20),
                   ),
                   TextFormField(
+                    controller: _emailController,
                     decoration: InputDecoration(
                         labelText: context.loc.email,
                         enabledBorder: const OutlineInputBorder(),
@@ -59,6 +82,7 @@ class LoginScreen extends StatelessWidget {
                         errorBorder: const OutlineInputBorder()),
                   ),
                   TextFormField(
+                    controller: _passwordController,
                     obscureText: !state.isPasswordVisible,
                     decoration: InputDecoration(
                         labelText: context.loc.password,
@@ -77,10 +101,9 @@ class LoginScreen extends StatelessWidget {
                   ),
                   FilledButton(
                     onPressed: () {
-                      context.read<LoginBloc>().add(
-                          const OnPressedLoginButtonEvent(
-                              email: "anas1@gmail.com",
-                              password: "Blackkuro01"));
+                      context.read<LoginBloc>().add(OnPressedLoginButtonEvent(
+                          email: _emailController.text,
+                          password: _passwordController.text));
                     },
                     child: Text(context.loc.login),
                   ),
