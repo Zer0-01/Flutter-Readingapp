@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:readingapps/configuration/app_local_storage.dart';
 import 'package:readingapps/configuration/app_logger.dart';
 import 'package:readingapps/data/models/request/login_dto_request.dart';
+import 'package:readingapps/data/models/response/login_dto_response.dart';
 import 'package:readingapps/data/repository/auth_repository.dart';
 
 part 'login_event.dart';
@@ -34,7 +36,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       final LoginDtoRequest authDtoRequest =
           LoginDtoRequest(email: event.email, password: event.password);
 
-      await _authRepository.postLogin(authDtoRequest);
+      final LoginDtoResponse loginDtoResponse =
+          await _authRepository.postLogin(authDtoRequest);
+
+      _log.debug("loginDtoResponse: ${loginDtoResponse.accessToken}");
+
+      await AppLocalStorage()
+          .save(StorageKeys.jwtToken.name, loginDtoResponse.accessToken);
 
       emit(state.copyWith(loginStatus: LoginStatus.success));
     } on DioException catch (e) {
