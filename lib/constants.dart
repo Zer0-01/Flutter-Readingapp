@@ -14,6 +14,8 @@ class VectorConstants {
   VectorConstants._();
   static const String VECTOR_SUCCESS_FILLED =
       'assets/vectors/vector_success_filled.svg';
+  static const String VECTOR_BACKGROUND =
+      'assets/vectors/vector_background.svg';
 }
 
 class AudioConstants {

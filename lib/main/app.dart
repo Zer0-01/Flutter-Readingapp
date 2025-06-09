@@ -21,6 +21,7 @@ class App extends StatelessWidget {
 
   AdaptiveTheme _buildIsebaApp(String defaultLanguage) {
     return AdaptiveTheme(
+      debugShowFloatingThemeButton: true,
       light: _buildLightTheme(),
       dark: _buildDarkTheme(),
       initial: AdaptiveThemeMode.light,

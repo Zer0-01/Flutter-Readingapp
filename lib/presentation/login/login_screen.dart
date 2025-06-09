@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:lottie/lottie.dart';
 import 'package:readingapps/configuration/app_router/app_router.gr.dart';
 import 'package:readingapps/constants.dart';
 import 'package:readingapps/extensions.dart';
+import 'package:readingapps/functions.dart';
 import 'package:readingapps/presentation/login/bloc/login_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -36,96 +38,116 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: BlocConsumer<LoginBloc, LoginState>(
-            listenWhen: (previous, current) =>
-                previous.loginStatus != current.loginStatus,
-            listener: (context, state) {
-              if (state.loginStatus == LoginStatus.loading) {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return LottieBuilder.asset(
-                        AnimationConstants.ANIMATION_LOADING);
-                  },
-                );
-                return;
-              }
-              if (state.loginStatus == LoginStatus.success) {
-                Navigator.pop(context);
-                context.router.replaceAll([const HomeSetupRoute()]);
-                return;
-              }
+      body: BlocConsumer<LoginBloc, LoginState>(
+          listenWhen: (previous, current) =>
+              previous.loginStatus != current.loginStatus,
+          listener: (context, state) {
+            if (state.loginStatus == LoginStatus.loading) {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return LottieBuilder.asset(
+                      AnimationConstants.ANIMATION_LOADING);
+                },
+              );
+              return;
+            }
+            if (state.loginStatus == LoginStatus.success) {
+              Navigator.pop(context);
+              context.router.replaceAll([const HomeSetupRoute()]);
+              return;
+            }
 
-              if (state.loginStatus == LoginStatus.error) {
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(context.loc.login_failed_please_try_again)));
-                return;
-              }
-            },
-            builder: (context, state) {
-              return Column(
-                spacing: 16,
-                children: [
-                  Icon(
-                    Icons.flutter_dash,
-                    size: context.heightPct(20),
+            if (state.loginStatus == LoginStatus.error) {
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(context.loc.login_failed_please_try_again)));
+              return;
+            }
+          },
+          builder: (context, state) {
+            return Column(
+              spacing: 16,
+              children: [
+                Container(
+                  height: context.heightPct(30),
+                  color: Colors.red,
+                  child: SvgPicture.asset(
+                    VectorConstants.VECTOR_BACKGROUND,
+                    fit: BoxFit.cover,
                   ),
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                        labelText: context.loc.email,
-                        enabledBorder: const OutlineInputBorder(),
-                        focusedBorder: const OutlineInputBorder(),
-                        errorBorder: const OutlineInputBorder()),
-                  ),
-                  TextFormField(
-                    controller: _passwordController,
-                    obscureText: !state.isPasswordVisible,
-                    decoration: InputDecoration(
-                        labelText: context.loc.password,
-                        suffixIcon: GestureDetector(
-                            onTap: () {
-                              context
-                                  .read<LoginBloc>()
-                                  .add(const OnPressedEyeIconEvent());
-                            },
-                            child: Icon(state.isPasswordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off)),
-                        enabledBorder: const OutlineInputBorder(),
-                        focusedBorder: const OutlineInputBorder(),
-                        errorBorder: const OutlineInputBorder()),
-                  ),
-                  FilledButton(
-                    onPressed: () {
-                      context.read<LoginBloc>().add(OnPressedLoginButtonEvent(
-                          email: _emailController.text,
-                          password: _passwordController.text));
-                    },
-                    child: Text(context.loc.login),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      context.router.pushPath("/register");
-                    },
-                    child: RichText(
-                        text: TextSpan(
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    spacing: 16,
+                    children: [
+                      TextFormField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          labelText: context.loc.email,
+                          enabledBorder: getInputBorder(
+                              type: InputBorderType.enabled, context: context),
+                          focusedBorder: getInputBorder(
+                              type: InputBorderType.focused, context: context),
+                          errorBorder: getInputBorder(
+                              type: InputBorderType.error, context: context),
+                        ),
+                      ),
+                      TextFormField(
+                        controller: _passwordController,
+                        obscureText: !state.isPasswordVisible,
+                        decoration: InputDecoration(
+                          labelText: context.loc.password,
+                          suffixIcon: GestureDetector(
+                              onTap: () {
+                                context
+                                    .read<LoginBloc>()
+                                    .add(const OnPressedEyeIconEvent());
+                              },
+                              child: Icon(state.isPasswordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off)),
+                          enabledBorder: getInputBorder(
+                              type: InputBorderType.enabled, context: context),
+                          focusedBorder: getInputBorder(
+                              type: InputBorderType.focused, context: context),
+                          errorBorder: getInputBorder(
+                              type: InputBorderType.error, context: context),
+                        ),
+                      ),
+                      FilledButton(
+                        onPressed: () {
+                          context.read<LoginBloc>().add(
+                              OnPressedLoginButtonEvent(
+                                  email: _emailController.text,
+                                  password: _passwordController.text));
+                        },
+                        child: Text(context.loc.login),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          context.router.pushPath("/register");
+                        },
+                        child: RichText(
+                          text: TextSpan(
                             text: context.loc.dont_have_an_account,
                             style: const TextStyle(color: Colors.black),
                             children: [
-                          TextSpan(
-                              text: " ${context.loc.register}",
-                              style:
-                                  TextStyle(color: context.theme.primaryColor))
-                        ])),
-                  )
-                ],
-              );
-            }),
-      ),
+                              TextSpan(
+                                  text: " ${context.loc.register}",
+                                  style: TextStyle(
+                                      color: context.theme.primaryColor))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          }),
     );
   }
 }

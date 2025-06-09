@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 import 'package:toastification/toastification.dart';
 
 /// Generates a random color based on the specified [type].
@@ -114,4 +115,40 @@ void showErrorToast(
     autoCloseDuration: const Duration(seconds: 4),
     borderRadius: BorderRadius.circular(12.0),
   );
+}
+
+enum InputBorderType {
+  enabled,
+  focused,
+  error,
+}
+
+InputBorder getInputBorder(
+    {required InputBorderType type, required BuildContext context}) {
+  switch (type) {
+    case InputBorderType.enabled:
+      return OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderSide: BorderSide(
+          color: context.theme.hintColor,
+          width: 1,
+        ),
+      );
+    case InputBorderType.focused:
+      return OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderSide: BorderSide(
+          color: context.theme.focusColor,
+          width: 1,
+        ),
+      );
+    case InputBorderType.error:
+      return const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderSide: BorderSide(
+          color: Colors.red,
+          width: 1,
+        ),
+      );
+  }
 }
