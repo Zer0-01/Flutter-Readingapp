@@ -128,23 +128,24 @@ InputBorder getInputBorder(
   switch (type) {
     case InputBorderType.enabled:
       return OutlineInputBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
-        borderSide: BorderSide(
-          color: context.theme.hintColor,
-          width: 1,
-        ),
-      );
-    case InputBorderType.focused:
-      return OutlineInputBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
         borderSide: BorderSide(
           color: context.theme.focusColor,
           width: 1,
         ),
       );
+    case InputBorderType.focused:
+      return OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(16),
+          ),
+          borderSide: BorderSide(
+            color: context.theme.hintColor,
+            width: 1,
+          ));
     case InputBorderType.error:
       return const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderRadius: BorderRadius.all(Radius.circular(16)),
         borderSide: BorderSide(
           color: Colors.red,
           width: 1,

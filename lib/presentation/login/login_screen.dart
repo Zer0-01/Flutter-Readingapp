@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
-import 'package:lottie/lottie.dart';
 import 'package:readingapps/configuration/app_router/app_router.gr.dart';
 import 'package:readingapps/constants.dart';
 import 'package:readingapps/extensions.dart';
@@ -44,10 +44,13 @@ class _LoginScreenState extends State<LoginScreen> {
           listener: (context, state) {
             if (state.loginStatus == LoginStatus.loading) {
               showDialog(
+                barrierDismissible: false,
                 context: context,
                 builder: (context) {
-                  return LottieBuilder.asset(
-                      AnimationConstants.ANIMATION_LOADING);
+                  return const CupertinoActivityIndicator(
+                    color: Colors.white,
+                    radius: 16,
+                  );
                 },
               );
               return;
@@ -69,9 +72,8 @@ class _LoginScreenState extends State<LoginScreen> {
             return Column(
               spacing: 16,
               children: [
-                Container(
+                SizedBox(
                   height: context.heightPct(30),
-                  color: Colors.red,
                   child: SvgPicture.asset(
                     VectorConstants.VECTOR_BACKGROUND,
                     fit: BoxFit.cover,
@@ -84,6 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       TextFormField(
                         controller: _emailController,
+                        onTapOutside: (event) {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        },
                         decoration: InputDecoration(
                           labelText: context.loc.email,
                           enabledBorder: getInputBorder(
@@ -97,6 +102,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextFormField(
                         controller: _passwordController,
                         obscureText: !state.isPasswordVisible,
+                        onTapOutside: (event) {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        },
                         decoration: InputDecoration(
                           labelText: context.loc.password,
                           suffixIcon: GestureDetector(
@@ -132,12 +140,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: RichText(
                           text: TextSpan(
                             text: context.loc.dont_have_an_account,
-                            style: const TextStyle(color: Colors.black),
+                            style: context.textTheme.bodyMedium,
                             children: [
                               TextSpan(
-                                  text: " ${context.loc.register}",
-                                  style: TextStyle(
-                                      color: context.theme.primaryColor))
+                                text: " ${context.loc.register}",
+                                style: context.textTheme.bodyMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
+                              )
                             ],
                           ),
                         ),

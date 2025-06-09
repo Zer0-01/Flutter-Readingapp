@@ -32,7 +32,7 @@ class App extends StatelessWidget {
   ThemeData _buildLightTheme() => ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         fontFamily: GoogleFonts.andika().fontFamily,
       );
 
@@ -40,7 +40,7 @@ class App extends StatelessWidget {
         useMaterial3: true,
         brightness: Brightness.dark,
         colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple, brightness: Brightness.dark),
+            seedColor: Colors.blue, brightness: Brightness.dark),
       );
 
   MultiBlocProvider _buildMaterialApp(
