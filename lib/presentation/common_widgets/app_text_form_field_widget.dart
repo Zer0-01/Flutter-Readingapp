@@ -13,6 +13,7 @@ class AppTextFormFieldWidget extends StatelessWidget {
   final void Function(PointerDownEvent)? onTapOutside;
   final bool obscureText;
   final Widget? suffixIcon;
+  final String? Function(String?)? validator;
 
   const AppTextFormFieldWidget({
     super.key,
@@ -21,6 +22,7 @@ class AppTextFormFieldWidget extends StatelessWidget {
     this.onTapOutside,
     this.obscureText = false,
     this.suffixIcon,
+    this.validator,
   });
 
   @override
@@ -29,6 +31,7 @@ class AppTextFormFieldWidget extends StatelessWidget {
       controller: controller,
       onTapOutside: onTapOutside,
       obscureText: obscureText,
+      validator: validator,
       decoration: InputDecoration(
         labelText: labelText,
         suffixIcon: suffixIcon,

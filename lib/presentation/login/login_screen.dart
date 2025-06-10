@@ -98,14 +98,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           FocusManager.instance.primaryFocus?.unfocus();
                         },
                         suffixIcon: GestureDetector(
-                            onTap: () {
-                              context
-                                  .read<LoginBloc>()
-                                  .add(const OnPressedEyeIconEvent());
-                            },
-                            child: Icon(state.isPasswordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off)),
+                          onTap: () {
+                            context
+                                .read<LoginBloc>()
+                                .add(const OnPressedEyeIconEvent());
+                          },
+                          child: Icon(state.isPasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                        ),
+                        labelText: context.loc.password,
                       ),
                       FilledButton(
                         onPressed: () {

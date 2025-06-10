@@ -6,6 +6,7 @@ import 'package:get/utils.dart';
 import 'package:readingapps/extensions.dart';
 import 'package:readingapps/functions.dart';
 import 'package:readingapps/presentation/common_widgets/app_bar_back_button.dart';
+import 'package:readingapps/presentation/common_widgets/app_text_form_field_widget.dart';
 import 'package:readingapps/presentation/register/bloc/register_bloc.dart';
 import 'package:readingapps/presentation/register/widgets/register_success_dialog_widget.dart';
 
@@ -80,7 +81,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Column(
                 spacing: 16,
                 children: [
-                  TextFormField(
+                  AppTextFormFieldWidget(
                     controller: _nameController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -88,16 +89,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       }
                       return null;
                     },
-                    decoration: InputDecoration(
-                      labelText: context.loc.name,
-                      enabledBorder: const OutlineInputBorder(),
-                      focusedBorder: const OutlineInputBorder(),
-                      errorBorder: const OutlineInputBorder(),
-                      focusedErrorBorder: const OutlineInputBorder(),
-                    ),
-                    onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                    onTapOutside: (value) {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
+                    labelText: context.loc.name,
                   ),
-                  TextFormField(
+                  AppTextFormFieldWidget(
                     controller: _emailController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -109,18 +106,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       }
                       return null;
                     },
-                    decoration: InputDecoration(
-                      labelText: context.loc.email,
-                      enabledBorder: const OutlineInputBorder(),
-                      focusedBorder: const OutlineInputBorder(),
-                      errorBorder: const OutlineInputBorder(),
-                      focusedErrorBorder: const OutlineInputBorder(),
-                    ),
-                    onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                    onTapOutside: (value) {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
+                    labelText: context.loc.email,
                   ),
-                  TextFormField(
+                  AppTextFormFieldWidget(
                     controller: _passwordController,
-                    obscureText: state.isObscureText,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return context.loc.please_enter_your_password;
@@ -136,23 +128,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       }
                       return null;
                     },
-                    decoration: InputDecoration(
-                      labelText: context.loc.password,
-                      suffixIcon: GestureDetector(
-                          onTap: () {
-                            context
-                                .read<RegisterBloc>()
-                                .add(const OnTapObscureEvent());
-                          },
-                          child: Icon(state.isObscureText
-                              ? Icons.visibility_off
-                              : Icons.visibility)),
-                      enabledBorder: const OutlineInputBorder(),
-                      focusedBorder: const OutlineInputBorder(),
-                      errorBorder: const OutlineInputBorder(),
-                      focusedErrorBorder: const OutlineInputBorder(),
-                    ),
-                    onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                    onTapOutside: (value) {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
+                    labelText: context.loc.password,
+                    obscureText: state.isObscureText,
+                    suffixIcon: GestureDetector(
+                        onTap: () {
+                          context
+                              .read<RegisterBloc>()
+                              .add(const OnTapObscureEvent());
+                        },
+                        child: Icon(state.isObscureText
+                            ? Icons.visibility_off
+                            : Icons.visibility)),
                   ),
                   SizedBox(
                       width: context.width,
