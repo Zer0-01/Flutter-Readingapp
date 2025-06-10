@@ -2,8 +2,9 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:readingapps/configuration/app_router.dart';
+import 'package:readingapps/configuration/app_router/app_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:readingapps/configuration/app_router/app_router_observer.dart';
 import 'package:readingapps/presentation/global_blocs/language_bloc/language_bloc.dart';
 
 class App extends StatelessWidget {
@@ -20,6 +21,7 @@ class App extends StatelessWidget {
 
   AdaptiveTheme _buildIsebaApp(String defaultLanguage) {
     return AdaptiveTheme(
+      debugShowFloatingThemeButton: true,
       light: _buildLightTheme(),
       dark: _buildDarkTheme(),
       initial: AdaptiveThemeMode.light,
@@ -30,7 +32,7 @@ class App extends StatelessWidget {
   ThemeData _buildLightTheme() => ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         fontFamily: GoogleFonts.andika().fontFamily,
       );
 
@@ -38,7 +40,7 @@ class App extends StatelessWidget {
         useMaterial3: true,
         brightness: Brightness.dark,
         colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple, brightness: Brightness.dark),
+            seedColor: Colors.blue, brightness: Brightness.dark),
       );
 
   MultiBlocProvider _buildMaterialApp(
@@ -52,7 +54,8 @@ class App extends StatelessWidget {
         builder: (context, state) => MaterialApp.router(
           theme: light,
           darkTheme: dark,
-          routerConfig: _appRouter.config(),
+          routerConfig: _appRouter.config(
+              navigatorObservers: () => [AppRouterObserver()]),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           locale: Locale(state.language),
