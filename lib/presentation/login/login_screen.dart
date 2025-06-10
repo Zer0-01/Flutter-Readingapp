@@ -7,7 +7,7 @@ import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:readingapps/configuration/app_router/app_router.gr.dart';
 import 'package:readingapps/constants.dart';
 import 'package:readingapps/extensions.dart';
-import 'package:readingapps/functions.dart';
+import 'package:readingapps/presentation/common_widgets/app_text_form_field_widget.dart';
 import 'package:readingapps/presentation/login/bloc/login_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -84,45 +84,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     spacing: 16,
                     children: [
-                      TextFormField(
+                      AppTextFormFieldWidget(
                         controller: _emailController,
-                        onTapOutside: (event) {
+                        labelText: context.loc.email,
+                        onTapOutside: (value) {
                           FocusManager.instance.primaryFocus?.unfocus();
                         },
-                        decoration: InputDecoration(
-                          labelText: context.loc.email,
-                          enabledBorder: getInputBorder(
-                              type: InputBorderType.enabled, context: context),
-                          focusedBorder: getInputBorder(
-                              type: InputBorderType.focused, context: context),
-                          errorBorder: getInputBorder(
-                              type: InputBorderType.error, context: context),
-                        ),
                       ),
-                      TextFormField(
+                      AppTextFormFieldWidget(
                         controller: _passwordController,
                         obscureText: !state.isPasswordVisible,
-                        onTapOutside: (event) {
+                        onTapOutside: (value) {
                           FocusManager.instance.primaryFocus?.unfocus();
                         },
-                        decoration: InputDecoration(
-                          labelText: context.loc.password,
-                          suffixIcon: GestureDetector(
-                              onTap: () {
-                                context
-                                    .read<LoginBloc>()
-                                    .add(const OnPressedEyeIconEvent());
-                              },
-                              child: Icon(state.isPasswordVisible
-                                  ? Icons.visibility
-                                  : Icons.visibility_off)),
-                          enabledBorder: getInputBorder(
-                              type: InputBorderType.enabled, context: context),
-                          focusedBorder: getInputBorder(
-                              type: InputBorderType.focused, context: context),
-                          errorBorder: getInputBorder(
-                              type: InputBorderType.error, context: context),
-                        ),
+                        suffixIcon: GestureDetector(
+                            onTap: () {
+                              context
+                                  .read<LoginBloc>()
+                                  .add(const OnPressedEyeIconEvent());
+                            },
+                            child: Icon(state.isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off)),
                       ),
                       FilledButton(
                         onPressed: () {
