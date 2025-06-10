@@ -28,21 +28,8 @@ class AppLogger {
     _name = name;
   }
 
-  static void configure({
-    required bool isProduction,
-    bool logToFile = false,
-    LogFormat logFormat = LogFormat.simple,
-  }) {
-    _level = isProduction ? Level.info : Level.debug;
-    _logFormat = logFormat;
-    final simple = SimplePrinter(printTime: true);
-    final pretty = PrettyPrinter(
-        dateTimeFormat: DateTimeFormat.dateAndTime, methodCount: 2);
-    LogPrinter printer = _logFormat == LogFormat.simple ? simple : pretty;
-    LogOutput output = ConsoleOutput();
-    LogFilter filter = isProduction ? ProductionFilter() : DevelopmentFilter();
-    _logger =
-        Logger(filter: filter, printer: printer, output: output, level: _level);
+  static void configure() {
+    _logger = Logger(printer: PrettyPrinter(methodCount: 0));
   }
 
   String _msg(dynamic message, [List<dynamic>? args]) {

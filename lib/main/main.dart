@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:readingapps/configuration/di.dart';
-import 'package:readingapps/configuration/local_storage.dart';
+import 'package:readingapps/configuration/app_di.dart';
+import 'package:readingapps/configuration/app_local_storage.dart';
 import 'package:readingapps/constants.dart';
 import 'package:readingapps/main/app.dart';
 

@@ -10,6 +10,14 @@ class ImageConstants {
   static const String IMAGE_COMING_SOON = 'assets/images/image_coming_soon.png';
 }
 
+class VectorConstants {
+  VectorConstants._();
+  static const String VECTOR_SUCCESS_FILLED =
+      'assets/vectors/vector_success_filled.svg';
+  static const String VECTOR_BACKGROUND =
+      'assets/vectors/vector_background.svg';
+}
+
 class AudioConstants {
   AudioConstants._();
   static const String AUDIO_A = 'audios/audio_a.mp3';
@@ -39,6 +47,12 @@ class AudioConstants {
   static const String AUDIO_X = 'audios/audio_x.mp3';
   static const String AUDIO_Y = 'audios/audio_y.mp3';
   static const String AUDIO_Z = 'audios/audio_z.mp3';
+}
+
+class AnimationConstants {
+  AnimationConstants._();
+  static const String ANIMATION_LOADING =
+      'assets/animations/animation_loading.json';
 }
 
 class CountryConstants {
