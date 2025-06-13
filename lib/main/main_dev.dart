@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -6,10 +7,12 @@ import 'package:readingapps/configuration/app_logger.dart';
 import 'package:readingapps/configuration/app_di.dart';
 import 'package:readingapps/configuration/app_local_storage.dart';
 import 'package:readingapps/constants.dart';
+import 'package:readingapps/firebase_options_dev.dart';
 import 'package:readingapps/main/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   AppLogger.configure();
   ProfileConstants.setEnvironment(Environment.dev);
   AppLocalStorage().setStorage(StorageType.sharedPreferences);

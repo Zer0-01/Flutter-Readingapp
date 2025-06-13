@@ -30,7 +30,7 @@
             "program": "lib/main/main_dev.dart",
             "args": [
                 "--flavor",
-                "development"
+                "dev"
             ]
         },
         {
@@ -41,7 +41,7 @@
             "program": "lib/main/main_dev.dart",
             "args": [
                 "--flavor",
-                "development"
+                "dev"
             ]
         },
         {
@@ -51,7 +51,7 @@
             "program": "lib/main/main_stag.dart",
             "args": [
                 "--flavor",
-                "staging"
+                "stag"
             ]
         },
         {
@@ -62,7 +62,7 @@
             "program": "lib/main/main_stag.dart",
             "args": [
                 "--flavor",
-                "staging"
+                "stag"
             ]
         },
         {
@@ -72,7 +72,7 @@
             "program": "lib/main/main_prod.dart",
             "args": [
                 "--flavor",
-                "production"
+                "prod"
             ]
         },
         {
@@ -83,7 +83,7 @@
             "program": "lib/main/main_prod.dart",
             "args": [
                 "--flavor",
-                "production"
+                "prod"
             ]
         }
     ]

@@ -1,18 +1,19 @@
-// buildscript {
-//     ext.kotlin_version = '1.7.10'
-//     repositories {
-//         google()
-//         mavenCentral()
-//     }
+buildscript {
+    ext.kotlin_version = '1.9.22' // Updated Kotlin version
+    repositories {
+        google()
+        mavenCentral()
+    }
 
-//     dependencies {
-        // START: FlutterFire Configuration
+    dependencies {
+        // FlutterFire Firebase Plugin
         classpath 'com.google.gms:google-services:4.3.15'
-        // END: FlutterFire Configuration
-//         classpath 'com.android.tools.build:gradle:7.3.0'
-//         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-//     }
-// }
+        // Android Gradle Plugin
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        // Kotlin Gradle Plugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
 
 allprojects {
     repositories {
@@ -21,14 +22,15 @@ allprojects {
     }
 }
 
+// Set unified build output location
 rootProject.buildDir = '../build'
+
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
     project.evaluationDependsOn(':app')
 }
 
+// Clean task for root project
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }

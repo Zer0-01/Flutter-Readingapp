@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'flutter-iseba-dev.firebasestorage.app',
     iosBundleId: 'com.anas.iseba.dev',
   );
+
 }
