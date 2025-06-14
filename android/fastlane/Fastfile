@@ -43,7 +43,7 @@ platform :android do
           testers: "anas.zulkifli2001@gmail.com",
           release_notes_file: "./android/release_notes.txt",
           android_artifact_type: "APK",
-          android_artifact_path: "./build/app/outputs/flutter-apk/app-prod-release.apk",
+          android_artifact_path: "./build/app/outputs/flutter-apk/app-dev-release.apk",
           service_credentials_file: "firebase_credentials.json"
       )
   end
