@@ -35,4 +35,16 @@ platform :android do
     gradle(task: "clean assembleRelease")
     upload_to_play_store
   end
+
+  desc "Upload Android App to Firebase"
+  lane :distribute_android_app do
+      firebase_app_distribution(
+          app: ENV["FIREBASE_APP_ID_ANDROID"],
+          testers: "anas.zulkifli2001@gmail.com",
+          release_notes_file: "./android/release_notes.txt",
+          android_artifact_type: "APK",
+          android_artifact_path: "./build/app/outputs/flutter-apk/app-prod-release.apk",
+          service_credentials_file: "firebase_credentials.json"
+      )
+  end
 end
