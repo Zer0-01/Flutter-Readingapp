@@ -6,6 +6,7 @@ import 'package:readingapps/configuration/app_router/app_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:readingapps/configuration/app_router/app_router_observer.dart';
 import 'package:readingapps/presentation/global_blocs/language_bloc/language_bloc.dart';
+import 'package:readingapps/theme/app_color_scheme.dart';
 
 class App extends StatelessWidget {
   final String defaultLanguage;
@@ -32,15 +33,15 @@ class App extends StatelessWidget {
   ThemeData _buildLightTheme() => ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        fontFamily: GoogleFonts.andika().fontFamily,
+        colorScheme: AppColorScheme.light,
+        fontFamily: GoogleFonts.roboto().fontFamily,
       );
 
   ThemeData _buildDarkTheme() => ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.blue, brightness: Brightness.dark),
+        colorScheme: AppColorScheme.dark,
+        fontFamily: GoogleFonts.roboto().fontFamily,
       );
 
   MultiBlocProvider _buildMaterialApp(
