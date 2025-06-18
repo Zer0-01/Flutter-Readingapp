@@ -116,7 +116,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   email: _emailController.text,
                                   password: _passwordController.text));
                         },
-                        child: Text(context.loc.login),
+                        child: Text(
+                          context.loc.login,
+                        ),
                       ),
                       GestureDetector(
                         onTap: () {
