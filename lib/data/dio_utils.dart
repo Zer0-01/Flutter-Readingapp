@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:readingapps/configuration/app_environment.dart';
+import 'package:readingapps/data/dio_simple_auth_interceptor.dart';
 
 enum DioMethod { get, post, put, delete }
 
@@ -27,7 +28,7 @@ class DioUtils {
         ),
       );
 
-      dio.interceptors.add(PrettyDioLogger());
+      dio.interceptors.addAll([PrettyDioLogger(), DioSimpleAuthInterceptor()]);
       switch (method) {
         case DioMethod.post:
           return dio.post(
