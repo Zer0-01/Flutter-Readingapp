@@ -24,5 +24,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(path: "/fonics", page: FonicSetupRoute.page),
         AutoRoute(path: "/", page: LoginSetupRoute.page, initial: true),
         AutoRoute(path: "/register", page: RegisterSetupRoute.page),
+        AutoRoute(path: "/profile", page: ProfileSetupRoute.page),
       ];
 }
