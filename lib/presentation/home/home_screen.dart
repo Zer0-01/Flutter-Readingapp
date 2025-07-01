@@ -1,35 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:readingapps/constants.dart';
 import 'package:readingapps/extensions.dart';
-import 'package:readingapps/presentation/home/bloc/home_bloc.dart';
+import 'package:readingapps/presentation/home/widgets/home_app_bar_widget.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<HomeBloc>().add(const OnInitHomeEvent());
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text(
-          context.loc.home,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
+      appBar: const HomeAppBarWidget(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
