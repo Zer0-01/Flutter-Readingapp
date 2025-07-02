@@ -19,20 +19,36 @@ class ReadingBottomSheetWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          spacing: 8,
           children: [
             Text(
               context.loc.general_select_language.capitalize!,
-              style: context.textTheme.titleMedium,
+              style: context.textTheme.titleMedium
+                  ?.copyWith(fontWeight: FontWeight.bold),
             ),
-            ...countries.map((country) => ListTile(
-                  onTap: () => Navigator.pop(context, country),
-                  leading: CountryFlag.fromLanguageCode(
-                    country.languageCode,
-                    shape: const Circle(),
-                  ),
-                  title: Text(country.country),
-                )),
+            Expanded(
+              child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    final CountryEnum countryEnum = countries[index];
+                    final String languageCode = countryEnum.languageCode;
+                    final String country = countryEnum.country;
+
+                    return ListTile(
+                      onTap: () => Navigator.pop(context, countryEnum),
+                      leading: CountryFlag.fromLanguageCode(
+                        languageCode,
+                        shape: const Circle(),
+                      ),
+                      title: Text(country),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 4,
+                    );
+                  },
+                  itemCount: countries.length),
+            ),
           ],
         ),
       ),
