@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/extensions/context_extensions.dart';
 import 'package:readingapps/constants.dart';
 import 'package:readingapps/extensions.dart';
 import 'package:readingapps/presentation/home/widgets/home_app_bar_widget.dart';
@@ -18,13 +17,6 @@ class HomeScreen extends StatelessWidget {
           spacing: 8,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                ImageConstants.IMAGE_BANNER,
-                width: context.width,
-              ),
-            ),
             SizedBox(
               height: context.heightPct(20),
               child: Row(
