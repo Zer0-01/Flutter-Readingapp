@@ -17,17 +17,23 @@ jobs:
         with:
           java-version: "8"
 
+      - name: Remove any preinstalled Flutter
+        run: |
+          sudo rm -rf /opt/hostedtoolcache/flutter
+          flutter --version || echo "No Flutter installed yet"
+
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.22.1"
           channel: "stable"
-          cache: false  # disable cache just in case
+          cache: false  # <--- important to avoid using cached old version
 
       - name: Check Flutter and Dart version
         run: |
           flutter --version
           dart --version
+
 
       - name: Install Android Gems
         working-directory: ${{ github.workspace }}/android
