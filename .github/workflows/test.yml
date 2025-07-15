@@ -57,7 +57,7 @@ jobs:
 
       - name: Build APK
         working-directory: ${{ github.workspace }}
-        run: flutter build apk
+        run: flutter build apk --target=lib/main/main_dev.dart
 
       - name: Create Firebase Service Credentials file
         run: |
