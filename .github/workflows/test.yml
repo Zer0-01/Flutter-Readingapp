@@ -22,6 +22,12 @@ jobs:
         with:
           flutter-version: "3.22.1"
           channel: "stable"
+          cache: false  # disable cache just in case
+
+      - name: Check Flutter and Dart version
+        run: |
+          flutter --version
+          dart --version
 
       - name: Install Android Gems
         working-directory: ${{ github.workspace }}/android
